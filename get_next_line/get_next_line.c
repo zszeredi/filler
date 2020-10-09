@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:57:38 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/04 16:38:45 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/09 17:48:27 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static int	ft_split(const int fd, char **line, char **m)
 			return (-1);
 		ft_strdel(&m[fd]);
 	}
-	ft_putstr("end");
 	return (1);
 }
 
@@ -65,19 +64,16 @@ int			get_next_line(const int fd, char **line)
 		buf[ret] = '\0';
 		if (m[fd] == NULL)
 		{
-			ft_putnbr(1);
 			if (!(m[fd] = ft_strdup(buf)))
 				return (-1);
 		}
 		else
 		{
-			ft_putnbr(2);
 			if (!(tmp = ft_strjoin(m[fd], buf)))
 				return (-1);
 			free(m[fd]);
 			m[fd] = tmp;
 		}
 	}	
-	ft_putstr("here");
 	return (ft_errors(fd, line, m, ret));
 }

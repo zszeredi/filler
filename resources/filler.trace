@@ -1,5 +1,6 @@
-seed = 2787
+seed = 8862
 X: timedout
+../zszeredi.filler: Segfault at 0
 players/abanlin.filler won
 Score:
-162AGAINST0
+348AGAINST0

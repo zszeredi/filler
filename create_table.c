@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 17:17:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/04 17:23:08 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/09 19:42:01 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,7 @@ static t_table		*get_sp(t_filler *ptr, t_table *t, char *line)
 t_table				*create_table(t_filler *ptr, t_table *t)
 {
 	int		i;
-	char	*line;
-
-	line = NULL;
+	
 	i = -1;
 	if (!(t->table = ft_memalloc((ptr->columns + 1) * sizeof(char))))
 		return (delete_table(t->table, t));
