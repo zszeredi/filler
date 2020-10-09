@@ -15,7 +15,7 @@ int main(void)
 		return (-1);
 	if (!(t = malloc(sizeof(t_table))))
 		return (-1);
-	fp = fopen("text", "a");
+	fp = fopen("text", "w");
 	if (line == NULL)
 	{
 		get_next_line(0, &line);
@@ -37,7 +37,7 @@ int main(void)
 				fprintf(fp, "%c", t->table[m][j]);
 				j++;
 			}
-			fprintf(fp, "n\n");
+			fprintf(fp, "m\n");
 			m++;
 		}
 

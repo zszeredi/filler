@@ -6,7 +6,7 @@
 /*   By: zszeredi <zszeredi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 16:49:23 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/09/13 11:22:31 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/09 21:37:00 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_strnchr(const char *s, char c)
 	while (s[++i] != '\0')
 	{
 		if (s[i] == c)
-			counter++;
+			++counter;
 	}
 	return (counter);
 }

@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 11:02:23 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/09/13 11:22:23 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/09 20:50:07 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ int		ft_str_n_chr(const char *s, char c)
 		i++;
 		counter++;
 	}
+	if (s[i] == '\0')
+		counter = -1;
 	return (counter);
 }
