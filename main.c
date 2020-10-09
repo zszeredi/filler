@@ -7,7 +7,7 @@ int main(void)
 	t_table *t;
 	FILE *fp;
 	int fd;
-	int m;
+	int m = 0;
 	int j;
 	line = NULL;
 	printf("0 0");
@@ -25,12 +25,11 @@ int main(void)
 		get_next_line(0, &line);
 		ptr = get_table_size(line, ptr);
 		fprintf(fp, "%s\n", line);
-		fprintf(fp, "%d %d\n", ptr->columns, ptr->lines);
+		fprintf(fp, "%d %d\n", ptr->lines, ptr->columns);
 		t = create_table(ptr, t);
 	//	while ((ft_strstr(line, "Piece")) == 0)
 	//		get_next_line(0, &line);
-		m = 0;
-		while (m <= ptr->lines)
+		while (m < ptr->lines)
 		{
 			j = 0;
 			while (j <= ptr->columns)
@@ -38,16 +37,17 @@ int main(void)
 				fprintf(fp, "%c", t->table[m][j]);
 				j++;
 			}
-			fprintf(fp, "\n");
+			fprintf(fp, "n\n");
 			m++;
 		}
+
+			fclose(fp);
 	}
-	else
-		fprintf(fp, "nope");
 	/*		
 			if((get_next_line(0, &line)) == 1)
 			fprintf(fp, "hello");
-			*/	
+			*/
+	free(line);	
 	fclose(fp);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 17:19:31 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/09 19:06:34 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/09 20:00:49 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_filler	*get_table_size(char *line, t_filler *ptr)
 	char **sizes;
 
 	sizes = ft_strsplit(line, ' ');
-	ptr->columns = ft_atoi(sizes[1]);
-	ptr->lines = ft_atoi(sizes[2]);
+	ptr->lines = ft_atoi(sizes[1]);
+	ptr->columns = ft_atoi(sizes[2]);
 	ft_strdel(sizes);
 	return (ptr);
 }

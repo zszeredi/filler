@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 17:17:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/09 19:42:01 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/09 20:08:38 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,18 @@ t_table				*create_table(t_filler *ptr, t_table *t)
 	int		i;
 	
 	i = -1;
-	if (!(t->table = ft_memalloc((ptr->columns + 1) * sizeof(char))))
+	if (!(t->table = ft_memalloc((ptr->lines + 1) * sizeof(char*))))
 		return (delete_table(t->table, t));
 	while (++i < ptr->lines)
 	{
-		if (!(t->table[i] = ft_memalloc((ptr->lines + 1) * sizeof(char))))
+		if (!(t->table[i] = ft_memalloc((ptr->columns + 1) * sizeof(char))))
 			return (delete_table(t->table, t));
 		else
 		{
-			dot(t->table[i], ptr->lines);
-			dot(*t->table, ptr->columns);
+			dot(t->table[i], ptr->columns);
+			dot(*t->table, ptr->lines);
 		}
 	}
-	t = get_sp(ptr, t, line);
+//	t = get_sp(ptr, t, line);
 	return (t);
 }
