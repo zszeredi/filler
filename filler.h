@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 09:40:06 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/09 21:20:06 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/10 10:11:17 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct	s_table
 {
 	char		**table;
 	t_coords	me_s;
-	t_coords	opp_s;
+	t_coords	coo;
 }				t_table;
 
 t_table			*create_table(t_filler *ptr, t_table *t);
