@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:33:43 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/10 14:54:08 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/10 15:45:07 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ int		cut_off_lin(t_tetra *tet, int n, int cal)
 	while (x < tet->col &&  n < tet->lin && n >= 0)
 	{
 		if (tet->tetra[n][x] == '*')
+		{
+			tet->cordis[tet->index].x = x;
+			tet->cordis[tet->index++].n = n;
 			return (counter);
+		}
 		if (x == tet->col - 1)
 		{
 			counter++;
@@ -45,7 +49,11 @@ int		cut_off_col(t_tetra *tet, int x, int cal)
 	while (n < tet->lin && x < tet->col && x >= 0)
 	{
 		if (tet->tetra[n][x] == '*')
+		{
+			tet->cordis[tet->index].x = x;
+			tet->cordis[tet->index++].n = n;
 			return (counter);
+		}
 		if (n == tet->lin - 1)
 		{
 			counter++;
@@ -67,6 +75,53 @@ t_tetra	*set_to_null(t_tetra *tet)
 	return(tet);
 }
 
+t_tetra	*deduct(t_tetra *tet)
+{
+	int i;
+	FILE *fp;
+
+	fp = fopen("coords", "w");
+	i = 0;
+	if (tet->del_col_s > 0)
+	{
+		while (i < tet->index)
+		{
+			fprintf(fp, "tet->cordis[%d].%d\n", i, tet->cordis[i].x);
+			tet->cordis[i].x = tet->col - tet->del_col_s;
+			fprintf(fp, "tet->cordis[%d].%d\n", i, tet->cordis[i].x);
+			i++;
+		}
+	}
+	i = 0;
+	if (tet->del_row_s > 0)
+	{
+		while (i < tet->index)
+		{
+			fprintf(fp, "tet->cordis[%d].%d\n", i, tet->cordis[i].n);
+			tet->cordis[i].n = tet->lin - tet->del_row_s;
+			fprintf(fp, "tet->cordis[%d].%d\n", i, tet->cordis[i].n);
+			i++;
+		}
+	}
+	fclose(fp);
+	return (tet);
+}
+
+t_tetra		*save_cordis(t_tetra *tet)
+{
+	if(!(tet->cordis = malloc(tet->num_stars * sizeof(t_coords))))
+		return (NULL);
+	set_to_null(tet);
+	tet->del_col_s = cut_off_col(tet, 0, 1);
+	tet->del_col_e = cut_off_col(tet, tet->col - 1, 0);
+	tet->del_row_s = cut_off_lin(tet, 0, 1);
+	tet->del_row_e = cut_off_lin(tet, tet->lin - 1, 0);
+	if (tet->del_col_s > 0 || tet->del_row_s > 0)
+		deduct(tet);
+	return (tet);
+}
+
+
 t_tetra		*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
 {
 	int		i;
@@ -79,6 +134,7 @@ t_tetra		*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
 	tab = ft_strsplit(line, ' ');
 	tet->lin = ft_atoi(tab[1]);
 	tet->col = ft_atoi(tab[2]);
+	tet->num_stars = 0;
 	fprintf(fp, "lin = %d col = %d\n", tet->lin, tet->col);
 	if(!(tet->tetra = ft_memalloc((tet->lin + 1) * sizeof(char*))))
 		return (NULL);
@@ -87,15 +143,12 @@ t_tetra		*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
 		get_next_line(0, &line);
 		if(!(tet->tetra[i] = ft_strdup(line)))
 			return (NULL);
+		tet->num_stars += ft_strnchr(line, '*');
 		fprintf(fp, "%s\n", tet->tetra[i]);
 		i++;
 	}
-	set_to_null(tet);
-	tet->del_col_s = cut_off_col(tet, 0, 1);
-	tet->del_col_e = cut_off_col(tet, tet->col - 1, 0);
-	tet->del_row_s = cut_off_lin(tet, 0, 1);
-	tet->del_row_e = cut_off_lin(tet, tet->lin - 1, 0);
-	fprintf(fo, "col.s %d col.e %d row.s %d row.e %d", tet->del_col_s, tet->del_col_e, tet->del_row_s, tet->del_row_e);
+	save_cordis(tet);
+	fprintf(fp, "col.s %d col.e %d row.s %d row.e %d num_stars = %d", tet->del_col_s, tet->del_col_e, tet->del_row_s, tet->del_row_e, tet->num_stars);
 	fclose(fp);
 	return (tet);
 }

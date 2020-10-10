@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 09:40:06 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/10 11:58:59 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/10 15:17:49 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef	struct	s_tetra
 	int			del_row_e;
 	int			col;
 	int			lin;
+	int			num_stars;
+	int			index;
 	char		**tetra;
 	t_coords	*cordis;
 }				t_tetra;
