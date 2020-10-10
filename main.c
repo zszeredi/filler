@@ -5,31 +5,31 @@ int main(void)
 	char *line;
 	t_filler *ptr;
 	t_table *t;
-	FILE *fp;
-	int fd;
-	int m = 0;
-	int j;
+	t_tetra *tet;
+	FILE *fp; //o
+	int m = 0;//o
+	int j;//o
 	line = NULL;
-	printf("0 0");
+	printf("0 0"); //00
 	if(!(ptr = malloc(sizeof(t_filler))))
 		return (-1);
 	if (!(t = malloc(sizeof(t_table))))
 		return (-1);
-	fp = fopen("text", "w");
+	if (!(tet = malloc(sizeof(t_tetra))))
+		return (-1);
+	fp = fopen("text", "w"); //oo
 	if (line == NULL)
 	{
 		get_next_line(0, &line);
 		ptr = get_player(line, ptr);
-		fprintf(fp, "%s\n", line);
-		fprintf(fp, "%c %c\n", ptr->me, ptr->opp);
+		fprintf(fp, "%s\n", line);//oo
+		fprintf(fp, "%c %c\n", ptr->me, ptr->opp); //oo
 		get_next_line(0, &line);
 		ptr = get_table_size(line, ptr);
-		fprintf(fp, "%s\n", line);
-		fprintf(fp, "%d %d\n", ptr->lines, ptr->columns);
+		fprintf(fp, "%s\n", line); //o
+		fprintf(fp, "%d %d\n", ptr->lines, ptr->columns);//o
 		t = create_table(ptr, t);
-	//	while ((ft_strstr(line, "Piece")) == 0)
-	//		get_next_line(0, &line);
-		while (m < ptr->lines)
+		while (m < ptr->lines) //loop out
 		{
 			j = 0;
 			while (j <= ptr->columns)
@@ -40,14 +40,10 @@ int main(void)
 			fprintf(fp, "m\n");
 			m++;
 		}
-
-			fclose(fp);
+		tet = tetro_read(ptr, t, tet);
+			fclose(fp); //oo
 	}
-	/*		
-			if((get_next_line(0, &line)) == 1)
-			fprintf(fp, "hello");
-			*/
 	free(line);	
-	fclose(fp);
+	fclose(fp); //o
 	return (0);
 }

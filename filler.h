@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 09:40:06 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/10 10:11:17 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/10 11:58:59 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 
 typedef	struct	s_filler
 {
-	char		me;
-	char		opp;
 	int			columns;
 	int			lines;
+	char		me;
+	char		opp;
+	char		**tetro;
 }				t_filler;
 
 typedef struct	s_coords
@@ -39,7 +40,23 @@ typedef struct	s_table
 	t_coords	me_s;
 	t_coords	coo;
 }				t_table;
-
+typedef	struct	s_tetra
+{
+	int			del_col_s;
+	int			del_col_e;
+	int			del_row_s;
+	int			del_row_e;
+	int			col;
+	int			lin;
+	char		**tetra;
+	t_coords	*cordis;
+}				t_tetra;
+t_table			*delete_table(char **str, t_table *t);
+t_tetra			*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet);
+t_table			*insert(t_table *t, char c, t_coords coord);
+t_table			*bridge(t_table *t, int x, char c);
+t_table			*read_chara(t_filler *ptr, t_table *t, char *line, int n);
+t_table			*fill_up(t_filler *ptr, t_table *t);
 t_table			*create_table(t_filler *ptr, t_table *t);
 t_filler		*get_table_size(char *line, t_filler *ptr);
 t_filler		*get_player(char *line, t_filler *ptr);
