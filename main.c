@@ -40,8 +40,8 @@ int main(void)
 			fprintf(fp, "m\n");
 			m++;
 		}
+		fclose(fp); //oo
 		tet = tetro_read(ptr, t, tet);
-			fclose(fp); //oo
 	}
 	free(line);	
 	fclose(fp); //o

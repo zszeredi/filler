@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:33:43 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/10 13:07:25 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/10 14:54:08 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,22 @@ int		cut_off_lin(t_tetra *tet, int n, int cal)
 {
 	int x;
 	int counter;
-	FILE *fp;
 
-	fp = fopen("tetros", "a");
 	x = 0;
 	counter = 0;
-	while (x <= tet->col)
+	while (x < tet->col &&  n < tet->lin && n >= 0)
 	{
-		if (x == tet->col)
+		if (tet->tetra[n][x] == '*')
+			return (counter);
+		if (x == tet->col - 1)
 		{
-			fprintf(fp, "hello");
 			counter++;
-			n = 0;
+			x = 0;
 			cal > 0 ? n++ : n--;
 		}
-		if (tet->tetra[n][x] != '*')
-			x++;
 		else
-			break ;
+			x++;
 	}
-	fclose(fp);
 	return(counter);
 }
 
@@ -43,27 +39,32 @@ int		cut_off_col(t_tetra *tet, int x, int cal)
 {
 	int n;
 	int counter;
-	FILE *fp;
 
-	fp = fopen("tetros", "a");
 	n = 0;
 	counter = 0;
-	while (n <= tet->lin)
+	while (n < tet->lin && x < tet->col && x >= 0)
 	{
-		if (n == tet->lin)
+		if (tet->tetra[n][x] == '*')
+			return (counter);
+		if (n == tet->lin - 1)
 		{
-			fprintf(fp, "here");
 			counter++;
 			n = 0;
-			cal > 0 ? x++ : x--;
-		}
-		if (tet->tetra[n][x] != '*')
-			n++;
+			cal == 1 ? x++ : x--;
+		}	
 		else
-			break ;
+			n++;
 	}
-	fclose(fp);
 	return(counter);
+}
+
+t_tetra	*set_to_null(t_tetra *tet)
+{
+	tet->del_col_s = 0;
+	tet->del_col_e = 0;
+	tet->del_row_s = 0;
+	tet->del_row_e = 0;
+	return(tet);
 }
 
 t_tetra		*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
@@ -72,7 +73,6 @@ t_tetra		*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
 	char	*line;
 	char 	**tab;
 	FILE 	*fp;
-
 	i = 0;
 	fp = fopen("tetros", "w");
 	get_next_line(0, &line);
@@ -90,11 +90,12 @@ t_tetra		*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
 		fprintf(fp, "%s\n", tet->tetra[i]);
 		i++;
 	}
+	set_to_null(tet);
 	tet->del_col_s = cut_off_col(tet, 0, 1);
 	tet->del_col_e = cut_off_col(tet, tet->col - 1, 0);
 	tet->del_row_s = cut_off_lin(tet, 0, 1);
 	tet->del_row_e = cut_off_lin(tet, tet->lin - 1, 0);
-	fprintf(fp, "col.s %d col.e %d row.s %d row.e %d", tet->del_col_s, tet->del_col_e, tet->del_row_s, tet->del_row_e);
+	fprintf(fo, "col.s %d col.e %d row.s %d row.e %d", tet->del_col_s, tet->del_col_e, tet->del_row_s, tet->del_row_e);
 	fclose(fp);
 	return (tet);
 }
