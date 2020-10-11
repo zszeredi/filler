@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:33:43 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/10 15:45:07 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/11 12:36:33 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,10 @@ t_tetra	*deduct(t_tetra *tet)
 	{
 		while (i < tet->index)
 		{
-			fprintf(fp, "tet->cordis[%d].%d\n", i, tet->cordis[i].x);
-			tet->cordis[i].x = tet->col - tet->del_col_s;
-			fprintf(fp, "tet->cordis[%d].%d\n", i, tet->cordis[i].x);
+			fprintf(fp, "col_Del\n");
+			fprintf(fp, "tet->cordis[%d].%d.%d\n", i, tet->cordis[i].x, tet->cordis[i].n);
+			tet->cordis[i].x -= tet->del_col_s;
+			fprintf(fp, "tet->cordis[%d].%d.%d\n", i, tet->cordis[i].x, tet->cordis[i].n);
 			i++;
 		}
 	}
@@ -97,9 +98,10 @@ t_tetra	*deduct(t_tetra *tet)
 	{
 		while (i < tet->index)
 		{
-			fprintf(fp, "tet->cordis[%d].%d\n", i, tet->cordis[i].n);
-			tet->cordis[i].n = tet->lin - tet->del_row_s;
-			fprintf(fp, "tet->cordis[%d].%d\n", i, tet->cordis[i].n);
+			fprintf(fp, "row_Del\n");
+			fprintf(fp, "tet->cordis[%d].%d.%d\n", i, tet->cordis[i].x, tet->cordis[i].n);
+			tet->cordis[i].n -= tet->del_row_s;
+			fprintf(fp, "tet->cordis[%d].%d.%d\n", i, tet->cordis[i].x, tet->cordis[i].n);
 			i++;
 		}
 	}

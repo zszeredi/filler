@@ -1,3 +1,6 @@
-lin = 1 col = 7
-....***
-col.s 4 col.e 0 row.s 0 row.e 0 num_stars = 3
+lin = 4 col = 4
+...*
+...*
+...*
+....
+col.s 3 col.e 0 row.s 0 row.e 1 num_stars = 3
