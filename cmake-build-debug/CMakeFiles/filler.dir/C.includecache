@@ -1,0 +1,70 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/create_table.c
+filler.h
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/filler.h
+
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/fill.c
+filler.h
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/filler.h
+
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/filler.h
+libft/libft.h
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/libft.h
+get_next_line/get_next_line.h
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get_next_line/get_next_line.h
+unistd.h
+-
+string.h
+-
+stdlib.h
+-
+stdio.h
+-
+
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get.c
+filler.h
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/filler.h
+
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get_next_line/get_next_line.c
+get_next_line.h
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get_next_line/get_next_line.h
+
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get_next_line/get_next_line.h
+stdint.h
+-
+fcntl.h
+-
+sys/types.h
+-
+sys/uio.h
+-
+unistd.h
+-
+../libft/libft.h
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/libft.h
+limits.h
+-
+
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/libft.h
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/main.c
+filler.h
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/filler.h
+
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/tetros.c
+filler.h
+/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/filler.h
+

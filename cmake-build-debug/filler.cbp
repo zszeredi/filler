@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="filler"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="filler">
+				<Option output="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/cmake-build-debug/filler.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/."/>
+					<Add directory="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf"/>
+					<Add directory="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get_next_line"/>
+					<Add directory="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 filler"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="filler/fast">
+				<Option output="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/cmake-build-debug/filler.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/."/>
+					<Add directory="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf"/>
+					<Add directory="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get_next_line"/>
+					<Add directory="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 filler/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Zsuzsanna\ Szeredi/CLionProjects/filler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/Makefile">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/author">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/create_table.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/fill.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/filler.h">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/ft_printf.h">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/cut_str.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/fs_c.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/fs_di.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/fs_f.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/fs_f_print.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/fs_f_round.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/fs_oux.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/fs_p.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/fs_s.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/ft_flags.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/ft_length_modifier.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/ft_printf.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/ft_wp.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/parse_fs.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/pdioux_create.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/pdioux_enlarge.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/pdioux_main.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/ft_printf/srcs/uniform_functions.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get_next_line/get_next_line.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get_next_line/get_next_line.h">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_atoi.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_atoi_dot.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_bzero.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_concentate_strings.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_isalnum.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_isalpha.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_isascii.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_isdigit.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_isprint.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_itoa.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_itoa_base.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_ll_itoa.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_ll_itoa_base.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_ll_uitoa.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_ll_uitoa_base.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_lstadd.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_lstdel.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_lstdelone.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_lstiter.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_lstmap.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_lstnew.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_memalloc.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_memccpy.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_memchr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_memcmp.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_memcpy.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_memdel.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_memmove.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_memset.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_putchar.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_putchar_fd.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_putchar_len.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_putendl.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_putendl_fd.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_putnbr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_putnbr_fd.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_putnstr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_putstr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_putstr_fd.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_putstr_len.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_str_find_num.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_str_is_lowercase.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_str_is_numeric.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_str_is_printable.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_str_is_uppercase.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_str_n_chr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_str_next_chr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strcapitalize.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strcat.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strchr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strclr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strcmp.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strcpy.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strdel.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strdup.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strequ.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_striter.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_striteri.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strjoin.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strjoin_free.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strlcat.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strlen.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strlowcase.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strmap.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strmapi.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strncat.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strnchr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strncmp.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strncpy.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strnequ.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strnew.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strnstr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strrchr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strrev.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strsplit.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strstr.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strsub.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strtrim.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_strupcase.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_tolower.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_toupper.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_uitoa.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/ft_uitoa_base.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/libft.h">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/main.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/col">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/coords">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/filler.trace">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/filler_vm">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/maps/map00">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/maps/map01">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/maps/map02">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/players/abanlin.filler">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/players/carli.filler">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/players/champely.filler">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/players/grati.filler">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/players/hcao.filler">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/players/superjeannot.filler">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/row">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/table">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/tetros">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/resources/text">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/tetros.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

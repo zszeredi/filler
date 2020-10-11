@@ -111,6 +111,10 @@ t_tetra	*deduct(t_tetra *tet)
 
 t_tetra		*save_cordis(t_tetra *tet)
 {
+	int i;
+	int j;
+	i = 0;
+	tet->index = 0;
 	if(!(tet->cordis = malloc(tet->num_stars * sizeof(t_coords))))
 		return (NULL);
 	set_to_null(tet);
@@ -118,6 +122,21 @@ t_tetra		*save_cordis(t_tetra *tet)
 	tet->del_col_e = cut_off_col(tet, tet->col - 1, 0);
 	tet->del_row_s = cut_off_lin(tet, 0, 1);
 	tet->del_row_e = cut_off_lin(tet, tet->lin - 1, 0);
+	while (i < tet->lin)
+	{
+		while (j < tet->col)
+		{
+			j = 0;
+			if (tet->tetra[i][j] == '*')
+			{
+				tet->cordis[tet->index].x = j;
+				tet->cordis[tet->index].n = i;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 	if (tet->del_col_s > 0 || tet->del_row_s > 0)
 		deduct(tet);
 	return (tet);
