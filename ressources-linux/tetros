@@ -1,6 +1,12 @@
-lin = 4 col = 2
-..
-*.
-*.
-*.
-col.s 0 col.e 1 row.s 1 row.e 0 num_stars = 3
+lin = 10 col = 5
+.....
+.....
+.....
+*....
+***..
+.**..
+***..
+*****
+..**.
+.....
+col.s 0 col.e 0 row.s 3 row.e 1 num_stars = 16

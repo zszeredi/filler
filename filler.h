@@ -50,10 +50,16 @@ typedef	struct	s_tetra
 	int			lin;
 	int			num_stars;
 	int			index;
+	int 		q;
 	char		**tetra;
+	t_coords	l;
+	t_coords	r;
 	t_coords	*cordis;
+
 }				t_tetra;
 t_table			*delete_table(char **str, t_table *t);
+
+t_tetra			*cut_off(t_tetra *tet);
 t_tetra			*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet);
 t_table			*insert(t_table *t, char c, t_coords coord);
 t_table			*bridge(t_table *t, int x, char c);

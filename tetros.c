@@ -12,62 +12,67 @@
 
 #include "filler.h"
 
-int		cut_off_lin(t_tetra *tet, int n, int cal)
+static t_tetra 	*ext_coords(t_tetra *tet)
 {
-	int x;
-	int counter;
+	int i;
 
-	x = 0;
-	counter = 0;
-	while (x < tet->col &&  n < tet->lin && n >= 0)
+	i = 0;
+	tet->l.x = tet->cordis[i].x;
+	tet->l.n = tet->cordis[i].n;
+	tet->r.x = tet->cordis[i].x;
+	tet->r.n = tet->cordis[i].n;
+	while (i < tet->index)
 	{
-		if (tet->tetra[n][x] == '*')
-			return (counter);
-		if (x == tet->col - 1)
+		if (tet->cordis[i].x < tet->l.x)
 		{
-			counter++;
-			x = 0;
-			cal > 0 ? n++ : n--;
+			tet->l.x = tet->cordis[i].x;
+			tet->l.n = tet->cordis[i].n;
 		}
-		else
-			x++;
-	}
-	return(counter);
-}
-
-int		cut_off_col(t_tetra *tet, int x, int cal)
-{
-	int n;
-	int counter;
-
-	n = 0;
-	counter = 0;
-	while (n < tet->lin && x < tet->col && x >= 0)
-	{
-		if (tet->tetra[n][x] == '*')
-			return (counter);
-		if (n == tet->lin - 1)
+		if (tet->cordis[i].x > tet->r.x)
 		{
-			counter++;
-			n = 0;
-			cal == 1 ? x++ : x--;
-		}	
-		else
-			n++;
+			tet->r.x = tet->cordis[i].x;
+			tet->r.n = tet->cordis[i].n;
+		}
+		i++;
 	}
-	return(counter);
+	return (tet);
 }
 
-t_tetra	*set_to_null(t_tetra *tet)
+static t_tetra 	*quadrant(t_tetra *tet, t_table *t)
 {
-	tet->del_col_s = 0;
-	tet->del_col_e = 0;
-	tet->del_row_s = 0;
-	tet->del_row_e = 0;
-	return(tet);
+	int ud;
+	int lr;
+	if (t->me_s.x < tet->col / 2)
+		lr = 1;
+	else
+		lr = 2;
+	if (t->me_s.n < tet->lin / 2)
+		ud = 1;
+	else
+		ud = 2;
+	if (lr == 1 && ud == 1)
+		tet->q = 1;
+	if (lr == 2 && ud == 1)
+		tet->q = 2;
+	if (lr == 1 && ud == 2)
+		tet->q = 3;
+	if (lr == 2 && ud == 2)
+		tet->q = 4;
+	return (tet);
 }
 
-t_tetra	*deduct(t_tetra *tet)
+t_table			*place(t_tetra *tet, t_table *t, t_filler *ptr)
+{
+	quadrant(tet, t);
+	ext_coords(tet);
+	//algo where to put it;
+	//overlap with my chara coordinate
+	//check if I am not out of the table
+	//insert
+	return (t);
+}
+
+t_tetra			*deduct(t_tetra *tet)
 {
 	int i;
 	FILE *fp;
@@ -102,21 +107,10 @@ t_tetra	*deduct(t_tetra *tet)
 	return (tet);
 }
 
-t_tetra		*save_cordis(t_tetra *tet)
+t_tetra			*save_cordis(t_tetra *tet, int i, int j)
 {
-	int i;
-	int j;
 	FILE *fp;
-	i = 0;
-	tet->index = 0;
-	if(!(tet->cordis = malloc(tet->num_stars * sizeof(t_coords))))
-		return (NULL);
-	set_to_null(tet);
 	fp = fopen("doc", "w");
-	tet->del_col_s = cut_off_col(tet, 0, 1);
-	tet->del_col_e = cut_off_col(tet, tet->col - 1, 0);
-	tet->del_row_s = cut_off_lin(tet, 0, 1);
-	tet->del_row_e = cut_off_lin(tet, tet->lin - 1, 0);
 	while (i <= tet->lin)
 	{
 		j = 0;
@@ -138,15 +132,28 @@ t_tetra		*save_cordis(t_tetra *tet)
 			}
 			j++;
 		}
-
 		i++;
 	}
 	fclose(fp);
 	return (tet);
 }
 
+t_tetra			*insert_tetra(t_tetra *tet, t_table *t, t_filler *ptr)
+{
+	int i;
+	int j;
 
-t_tetra		*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
+	i = 0;
+	tet->index = 0;
+	if(!(tet->cordis = malloc(tet->num_stars * sizeof(t_coords))))
+		return (NULL);
+	cut_off(tet);
+	save_cordis(tet, i, j);
+	place(tet, t, ptr);
+	return(tet);
+}
+
+t_tetra			*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
 {
 	int		i;
 	char	*line;
@@ -171,10 +178,8 @@ t_tetra		*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
 		fprintf(fp, "%s\n", tet->tetra[i]);
 		i++;
 	}
-	//sep function for cut off
-	save_cordis(tet);
-	place(tet, table, ptr);
-	fprintf(fp, "col.s %d col.e %d row.s %d row.e %d num_stars = %d", tet->del_col_s, tet->del_col_e, tet->del_row_s, tet->del_row_e, tet->num_stars);
+	insert_tetra(tet, t, ptr);
+	fprintf(fp, "col.s %d col.e %d row.s %d row.e %d num_stars = %d\n", tet->del_col_s, tet->del_col_e, tet->del_row_s, tet->del_row_e, tet->num_stars);
 	fclose(fp);
 	return (tet);
 }

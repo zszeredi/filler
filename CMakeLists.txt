@@ -138,4 +138,4 @@ add_executable(filler
         get.c
         main.c
         Makefile
-        tetros.c)
+        tetros.c cut.c)
