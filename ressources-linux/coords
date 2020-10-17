@@ -1,0 +1,9 @@
+index = 3row_Del
+tet->cordis[0].0.1
+tet->cordis[0].0.0
+row_Del
+tet->cordis[1].0.2
+tet->cordis[1].0.1
+row_Del
+tet->cordis[2].0.3
+tet->cordis[2].0.2

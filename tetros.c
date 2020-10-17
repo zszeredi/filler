@@ -22,11 +22,7 @@ int		cut_off_lin(t_tetra *tet, int n, int cal)
 	while (x < tet->col &&  n < tet->lin && n >= 0)
 	{
 		if (tet->tetra[n][x] == '*')
-		{
-			tet->cordis[tet->index].x = x;
-			tet->cordis[tet->index++].n = n;
 			return (counter);
-		}
 		if (x == tet->col - 1)
 		{
 			counter++;
@@ -49,11 +45,7 @@ int		cut_off_col(t_tetra *tet, int x, int cal)
 	while (n < tet->lin && x < tet->col && x >= 0)
 	{
 		if (tet->tetra[n][x] == '*')
-		{
-			tet->cordis[tet->index].x = x;
-			tet->cordis[tet->index++].n = n;
 			return (counter);
-		}
 		if (n == tet->lin - 1)
 		{
 			counter++;
@@ -81,6 +73,7 @@ t_tetra	*deduct(t_tetra *tet)
 	FILE *fp;
 
 	fp = fopen("coords", "w");
+	fprintf(fp, "index = %d", tet->index);
 	i = 0;
 	if (tet->del_col_s > 0)
 	{
@@ -93,9 +86,9 @@ t_tetra	*deduct(t_tetra *tet)
 			i++;
 		}
 	}
-	i = 0;
 	if (tet->del_row_s > 0)
 	{
+		i = 0;
 		while (i < tet->index)
 		{
 			fprintf(fp, "row_Del\n");
@@ -113,32 +106,42 @@ t_tetra		*save_cordis(t_tetra *tet)
 {
 	int i;
 	int j;
+	FILE *fp;
 	i = 0;
 	tet->index = 0;
 	if(!(tet->cordis = malloc(tet->num_stars * sizeof(t_coords))))
 		return (NULL);
 	set_to_null(tet);
+	fp = fopen("doc", "w");
 	tet->del_col_s = cut_off_col(tet, 0, 1);
 	tet->del_col_e = cut_off_col(tet, tet->col - 1, 0);
 	tet->del_row_s = cut_off_lin(tet, 0, 1);
 	tet->del_row_e = cut_off_lin(tet, tet->lin - 1, 0);
-	while (i < tet->lin)
+	while (i <= tet->lin)
 	{
-		while (j < tet->col)
+		j = 0;
+		while (j <= tet->col)
 		{
-			j = 0;
 			if (tet->tetra[i][j] == '*')
 			{
 				tet->cordis[tet->index].x = j;
 				tet->cordis[tet->index].n = i;
+				fprintf(fp, "tet->cordis[%d].%d.%d\n", tet->index, tet->cordis[tet->index].x, tet->cordis[tet->index].n);
+				tet->index++;
+			}
+			if (tet->index == tet->num_stars)
+			{
+				if (tet->del_col_s > 0 || tet->del_row_s > 0)
+					deduct(tet);
+				fclose(fp);
+				return (tet);
 			}
 			j++;
 		}
-		j = 0;
+
 		i++;
 	}
-	if (tet->del_col_s > 0 || tet->del_row_s > 0)
-		deduct(tet);
+	fclose(fp);
 	return (tet);
 }
 
@@ -168,7 +171,9 @@ t_tetra		*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
 		fprintf(fp, "%s\n", tet->tetra[i]);
 		i++;
 	}
+	//sep function for cut off
 	save_cordis(tet);
+	place(tet, table, ptr);
 	fprintf(fp, "col.s %d col.e %d row.s %d row.e %d num_stars = %d", tet->del_col_s, tet->del_col_e, tet->del_row_s, tet->del_row_e, tet->num_stars);
 	fclose(fp);
 	return (tet);

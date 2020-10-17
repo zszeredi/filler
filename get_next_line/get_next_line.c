@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "get_next_line.h"
 
 static int	ft_split(const int fd, char **line, char **m)
@@ -52,12 +53,12 @@ static int	ft_errors(const int fd, char **line, char **m, int ret)
 
 int			get_next_line(const int fd, char **line)
 {
-	static char	*m[OPEN_MAX];
+	static char	*m[FOPEN_MAX];
 	char		*tmp;
 	char		buf[BUFF_SIZE + 1];
 	int			ret;
 
-	if ((fd < 0 && fd >= OPEN_MAX) || line == NULL || read(fd, buf, 0) < 0)
+	if ((fd < 0 && fd >= FOPEN_MAX) || line == NULL || read(fd, buf, 0) < 0)
 		return (-1);
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{

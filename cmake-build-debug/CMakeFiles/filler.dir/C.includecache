@@ -33,11 +33,15 @@ filler.h
 /cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/filler.h
 
 /cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get_next_line/get_next_line.c
+stdio.h
+-
 get_next_line.h
 /cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get_next_line/get_next_line.h
 
 /cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/get_next_line/get_next_line.h
 stdint.h
+-
+limits.h
 -
 fcntl.h
 -
@@ -49,8 +53,6 @@ unistd.h
 -
 ../libft/libft.h
 /cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/libft.h
-limits.h
--
 
 /cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler/libft/libft.h
 string.h
