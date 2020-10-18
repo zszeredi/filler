@@ -12,21 +12,21 @@
 
 #include "filler.h"
 
-t_table			*insert(t_table *t, char c, t_coords coord)
+static t_table			*insert(t_table *t, char c, t_coords coord)
 {
 	if (t->table[coord.n][coord.x] != '\0' && t->table[coord.n][coord.x] == '.')
 		t->table[coord.n][coord.x] = c;
 	return (t);
 }
 
-t_table			*bridge(t_table *t, int x, char c)
+static t_table			*bridge(t_table *t, int x, char c)
 {
 	t->coo.x = x - 4;
 	insert(t, c, t->coo);
 	return (t);
 }
 
-t_table			*read_chara(t_filler *ptr, t_table *t, char *line, int n)
+static t_table			*read_chara(t_filler *ptr, t_table *t, char *line, int n)
 {
 	int			x;
 	static int	counter;

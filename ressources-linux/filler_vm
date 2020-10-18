@@ -146,16 +146,16 @@ class Plateau
 			if (piece_char == nil || row < y || row >= (y + @piece_row))
 				fd.write line + "\n"
 			else
-				col = 0
-				while (col < line.length)
-					if (col >= x &&
-						col < (x + @piece_col) &&
-						@piece_content[(row - y) * @piece_col + (col - x)] == '*')
+				t_col = 0
+				while (t_col < line.length)
+					if (t_col >= x &&
+						t_col < (x + @piece_col) &&
+						@piece_content[(row - y) * @piece_col + (t_col - x)] == '*')
 						fd.write piece_char
 					else
-						fd.write line[col]
+						fd.write line[t_col]
 					end
-					col += 1
+					t_col += 1
 				end
 				fd.write "\n"
 			end
@@ -213,9 +213,9 @@ class Plateau
 		end
 	end
 
-	def check_placement(row, col, char)
+	def check_placement(row, t_col, char)
 
-		#if (row < 0 || col < 0)
+		#if (row < 0 || t_col < 0)
 		#	return 2
 		#end
 
@@ -226,11 +226,11 @@ class Plateau
 		i = 0
 		for y in 0..(@piece_row - 1)
 			for x in 0..(@piece_col - 1)
-				if ((y + row >= @map_row && empty_lines.include?(y) == false) || (x + col >= @map_col && empty_cols.include?(x) == false))
+				if ((y + row >= @map_row && empty_lines.include?(y) == false) || (x + t_col >= @map_col && empty_cols.include?(x) == false))
 					return 2
 				end
-				if (y + row < @map_row && x + col < @map_col && @map_table[y + row][x + col] != '.' && (tmp = piece_char(x, y)) != '.')
-					if (@map_table[y + row][x + col] == char)
+				if (y + row < @map_row && x + t_col < @map_col && @map_table[y + row][x + t_col] != '.' && (tmp = piece_char(x, y)) != '.')
+					if (@map_table[y + row][x + t_col] == char)
 						i = i + 1
 					else
 						return 2
@@ -241,15 +241,15 @@ class Plateau
 		return i
 	end
 
-	def change_data(row, col, char)
+	def change_data(row, t_col, char)
         @map_table.each do | item |
             item.upcase!
         end
 		for y in 0..(@piece_row - 1)
 			for x in 0..(@piece_col - 1)
 				if (piece_char(x, y) == '*')
-                    @map_table[y + row][x + col] = char
-                    #@map_table[y + row][x + col] = char.downcase
+                    @map_table[y + row][x + t_col] = char
+                    #@map_table[y + row][x + t_col] = char.downcase
 				end
 			end
 		end

@@ -1,0 +1,8 @@
+
+me_s.14.12
+
+tet->r.1.0
+q = 4push_x = 13 push_n = 12
+col.s 1 row.s 0 num_stars = 2
+tet->cordis[0].0.0 -> tet->cordis[0].13.12
+tet->cordis[1].1.0 -> tet->cordis[1].14.12

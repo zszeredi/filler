@@ -23,9 +23,9 @@ typedef	struct	s_filler
 {
 	int			columns;
 	int			lines;
+	int			q;
 	char		me;
 	char		opp;
-	char		**tetro;
 }				t_filler;
 
 typedef struct	s_coords
@@ -43,14 +43,11 @@ typedef struct	s_table
 typedef	struct	s_tetra
 {
 	int			del_col_s;
-	int			del_col_e;
 	int			del_row_s;
-	int			del_row_e;
-	int			col;
-	int			lin;
+	int			t_col;
+	int			t_lin;
 	int			num_stars;
 	int			index;
-	int 		q;
 	char		**tetra;
 	t_coords	l;
 	t_coords	r;
@@ -58,15 +55,15 @@ typedef	struct	s_tetra
 
 }				t_tetra;
 t_table			*delete_table(char **str, t_table *t);
-
+t_table			*algo(t_filler *ptr, t_table *t, t_tetra *tet);
 t_tetra			*cut_off(t_tetra *tet);
+t_coords		coord_copy(t_coords coo, int i, int j);
 t_tetra			*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet);
-t_table			*insert(t_table *t, char c, t_coords coord);
-t_table			*bridge(t_table *t, int x, char c);
-t_table			*read_chara(t_filler *ptr, t_table *t, char *line, int n);
+t_filler		*quadrant(t_filler *ptr, t_table *t);
 t_table			*fill_up(t_filler *ptr, t_table *t);
 t_table			*create_table(t_filler *ptr, t_table *t);
 t_filler		*get_table_size(char *line, t_filler *ptr);
 t_filler		*get_player(char *line, t_filler *ptr);
+t_table			*first_round(t_filler *ptr, t_table *t, char *line);
 int				main(void);
 #endif

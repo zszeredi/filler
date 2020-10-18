@@ -1,0 +1,9 @@
+
+me_s.2.8
+
+tet->r.0.0
+q = 3push_x = 2 push_n = 8
+col.s 0 row.s 0 num_stars = 3
+tet->cordis[0].0.0 -> tet->cordis[0].2.8
+tet->cordis[1].1.0 -> tet->cordis[1].3.8
+tet->cordis[2].2.0 -> tet->cordis[2].4.8
