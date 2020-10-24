@@ -69,7 +69,7 @@ int main(void)
 		}
 		fclose(fp);
 		ft_strdel(&line);
-		tetro_read(ptr);
+		tetro_read(ptr, line);
 		printf("%d %d", ptr->me_s.x, ptr->me_s.n);
 	}
 	delete_table(ptr->table, ptr);
