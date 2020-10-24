@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:33:43 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/24 17:07:00 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/24 17:36:24 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,10 +129,11 @@ static t_tetra			*insert_tetra(t_tetra *tet, t_filler *ptr)
 	return(tet);
 }
 
-t_filler			*tetro_read(t_filler *ptr, char *line)
+t_filler			*tetro_read(t_filler *ptr)
 {
 	int		i;
 	char 	**tab;
+	char	*line;
 	t_tetra	*tet;
 	FILE 	*fp; // out
 	i = 0;
@@ -140,7 +141,6 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 		return (NULL);
 	fp = fopen("tetros", "w"); //o
 //	get_table_size(line, tet->t_lin, tet->t_col);
-	ft_strdel(&line);
 	get_next_line(0, &line);
 	tab = ft_strsplit(line, ' ');
 	tet->t_lin = ft_atoi(tab[1]);

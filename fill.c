@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:04:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/24 14:53:25 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/24 17:33:44 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_filler			*read_chara(t_filler *ptr, char *line, int n)
 
 	counter = 0;
 	x = 0;
-	ptr->coo.n = n - 1;
+	ptr->coo.n = n;
 	while (line[x] != '\0')
 	{
 		if (line[x] == ptr->me)
@@ -63,7 +63,7 @@ t_filler		*fill_up(t_filler *ptr, char *line)
 	if ((ft_strchr(line, ptr->me)) != 0 || (ft_strchr(line, ptr->opp)) != 0)
 			read_chara(ptr, line, n);
 		fprintf(fp, "%s\n", line);
-	while (n <= ptr->lines - 1)
+	while (n <= ptr->lines)
 	{
 		get_next_line(0, &line);
 		if ((ft_strchr(line, ptr->me)) != 0 || (ft_strchr(line, ptr->opp)) != 0)

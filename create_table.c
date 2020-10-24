@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 17:17:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/24 14:53:49 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/24 17:33:46 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,5 @@ t_filler	*create_table(t_filler *ptr, char *line)
 		}
 	}
 	quadrant(ptr);
-	fill_up(ptr, line);
 	return (ptr);
 }

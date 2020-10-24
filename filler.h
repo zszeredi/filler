@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 09:40:06 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/24 17:06:42 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/24 17:36:47 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_filler			*delete_table(char **str, t_filler *ptr);
 t_filler		*algo(t_filler *ptr, t_tetra *tet);
 t_tetra			*cut_off(t_tetra *tet);
 t_coords		coord_copy(t_coords coo, int i, int j);
-t_filler			*tetro_read(t_filler *ptr, char *line);
+t_filler			*tetro_read(t_filler *ptr);
 t_filler		*fill_up(t_filler *ptr, char *line);
 t_filler		*create_table(t_filler *ptr, char *line);
 t_filler		*get_player(char *line, t_filler *ptr);
