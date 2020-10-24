@@ -6,11 +6,26 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:33:43 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/11 12:36:33 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/24 14:54:22 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+t_tetra			*delete_tetra(char **str, t_tetra *tet)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		ft_strdel(&str[i]);
+		i++;
+	}
+	ft_strdel(str);
+	return (tet);
+}
+
 
 t_coords		coord_copy(t_coords coo, int i, int j)
 {
@@ -98,7 +113,7 @@ static t_tetra			*save_cordis(t_tetra *tet, int i)
 	return (tet);
 }
 
-static t_tetra			*insert_tetra(t_tetra *tet, t_table *t, t_filler *ptr)
+static t_tetra			*insert_tetra(t_tetra *tet, t_filler *ptr)
 {
 	int i;
 
@@ -110,18 +125,21 @@ static t_tetra			*insert_tetra(t_tetra *tet, t_table *t, t_filler *ptr)
 	save_cordis(tet, i);
 	printf("%d %d", tet->cordis[0].x, tet->cordis[0].n);
 	ext_coords(ptr, tet);
-	algo(ptr, t, tet);
+	algo(ptr, tet);
 	return(tet);
 }
 
-t_tetra			*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
+t_filler			*tetro_read(t_filler *ptr, char *line)
 {
 	int		i;
-	char	*line;
 	char 	**tab;
+	t_tetra	*tet;
 	FILE 	*fp; // out
 	i = 0;
+	if(!(tet = malloc(sizeof(t_tetra))))
+		return (NULL);
 	fp = fopen("tetros", "w"); //o
+//	get_table_size(line, tet->t_lin, tet->t_col);
 	get_next_line(0, &line);
 	tab = ft_strsplit(line, ' ');
 	tet->t_lin = ft_atoi(tab[1]);
@@ -137,9 +155,12 @@ t_tetra			*tetro_read(t_filler *ptr, t_table *t, t_tetra *tet)
 			return (NULL);
 		tet->num_stars += ft_strnchr(line, '*');
 		fprintf(fp, "%s\n", tet->tetra[i]); //oo
+		ft_strdel(&line);
 		i++;
 	}
 	fclose(fp); // oo
-	insert_tetra(tet, t, ptr);
-	return (tet);
+	insert_tetra(tet, ptr);
+	delete_tetra(tet->tetra, tet);
+	free(tet);
+	return (ptr);
 }

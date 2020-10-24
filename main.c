@@ -1,63 +1,65 @@
 #include "filler.h"
 
-t_table *first_round(t_filler *ptr, t_table *t, char *line)
+/*t_filler	*first_round(t_filler *ptr)
 {
 	FILE *fp; //
+	char *line;
 	int j;//
 	int m = 0; //out
-	if (!(t = malloc(sizeof(t_table))))
-		return (NULL);
 	fp = fopen("first", "w"); //oo//
-	get_next_line(0, &line);
+	 if (get_next_line(0, &line) > 0)
 	ptr = get_player(line, ptr);
 	fprintf(fp, "%s\n", line);//oo
 	fprintf(fp, "%c %c\n", ptr->me, ptr->opp); //oo
-	get_next_line(0, &line);
+	 if (get_next_line(0, &line) > 0)
 	ptr = get_table_size(line, ptr);
 	fprintf(fp, "%s\n", line); //
 	fprintf(fp, "%d %d\n", ptr->lines, ptr->columns);//o
-	t = create_table(ptr, t);
+	create_table(ptr);
 	while (m < ptr->lines) //loop out
 	{
 		j = 0;
 		while (j <= ptr->columns)
 		{
-			fprintf(fp, "%c", t->table[m][j]);
+			fprintf(fp, "%c", ptr->table[m][j]);
 			j++;
 		}
 		fprintf(fp, "m\n");
 		m++;
 	}
 	fclose(fp); //oo
-	ptr = quadrant(ptr, t);
-	return (t);
+	ptr = quadrant(ptr);
+	free(line);
+	return (ptr);
 }
-
+*/
 int main(void)
 {
-	printf("0,0\n");
-	char *line;
-	int n;
-	t_filler *ptr;
-	t_table *t;
-	t_tetra *tet;
-	if (!(tet = malloc(sizeof(t_tetra))))
+	t_filler	*ptr;
+	char		*line;
+	
+	if (!(ptr = malloc(sizeof(t_filler))))
 		return (-1);
-	n = 0;
-	if (n == 0)
+	if (get_next_line(0, &line) > 0)
 	{
-		if (!(ptr = malloc(sizeof(t_filler))))
-			return (-1);
-
-		t = first_round(ptr, t, line);
-		tet = tetro_read(ptr, t, tet);
-		n = 1;
+		get_player(line, ptr);
+		ft_strdel(&line);
 	}
-	else
+	if (get_next_line(0, &line) > 0)
+	{	
+		create_table(ptr, line);
+		ft_strdel(&line);
+		tetro_read(ptr, line);
+		printf("%d %d\n", ptr->me_s.x, ptr->me_s.n);
+	}
+/*	while (get_next_line(0, &line) > 0) // fix loop here that I read line and send it to the right function
 	{
-		fill_up(ptr, t);
-		tet = tetro_read(ptr, t, tet);
+		fill_up(ptr, line);
+		tetro_read(ptr, line);
+		printf("%d %d", ptr->me_s.x, ptr->me_s.n);
+		ft_strdel(&line);
 	}
-	//printf("%d %d", tet->cordis[0].x, tet->cordis[0].n);
+*/	delete_table(ptr->table, ptr);
+	free(ptr);
 	return (0);
 }

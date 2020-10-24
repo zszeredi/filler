@@ -6,16 +6,29 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 12:01:11 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/09/13 11:05:48 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/24 14:50:04 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
-# include <unistd.h>
+# include <math.h>
+# include <stdarg.h>
+# include <limits.h>
+
+# define BUFF_SIZE 100
+
+typedef struct		s_gnl
+{
+	char			buff[BUFF_SIZE + 1];
+	char			*rest[OPEN_MAX];
+	int				ret;
+	char			*ptr;
+}					t_gnl;
 
 typedef struct		s_list
 {
@@ -32,6 +45,8 @@ typedef	struct		s_itoa
 	int				cap;
 }					t_itoa;
 
+int					get_next_line(const int fd, char **line);
+size_t				ft_pos_i(char *str, int c);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);

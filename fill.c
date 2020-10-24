@@ -6,69 +6,72 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:04:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/10 11:04:55 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/24 14:53:25 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static t_table			*insert(t_table *t, char c, t_coords coord)
+static t_filler		*insert(t_filler *ptr, char c, t_coords coord)
 {
-	if (t->table[coord.n][coord.x] != '\0' && t->table[coord.n][coord.x] == '.')
-		t->table[coord.n][coord.x] = c;
-	return (t);
+	if (ptr->table[coord.n][coord.x] != '\0' && ptr->table[coord.n][coord.x] == '.')
+		ptr->table[coord.n][coord.x] = c;
+	return (ptr);
 }
 
-static t_table			*bridge(t_table *t, int x, char c)
+static t_filler			*bridge(t_filler *ptr, int x, char c)
 {
-	t->coo.x = x - 4;
-	insert(t, c, t->coo);
-	return (t);
+	ptr->coo.x = x - 4;
+	insert(ptr, c, ptr->coo);
+	return (ptr);
 }
 
-static t_table			*read_chara(t_filler *ptr, t_table *t, char *line, int n)
+static t_filler			*read_chara(t_filler *ptr, char *line, int n)
 {
 	int			x;
 	static int	counter;
 
 	counter = 0;
 	x = 0;
-	t->coo.n = n - 1;
+	ptr->coo.n = n - 1;
 	while (line[x] != '\0')
 	{
 		if (line[x] == ptr->me)
 		{
-			bridge(t, x, ptr->me);
+			bridge(ptr, x, ptr->me);
 			if (counter == 0)
 			{
-				t->me_s.x = t->coo.x;
-				t->me_s.n = t->coo.n;
+				ptr->me_s.x = ptr->coo.x;
+				ptr->me_s.n = ptr->coo.n;
 				counter = 1;
 			}
 		}
 		else if (line[x] == ptr->opp)
-			bridge(t, x, ptr->opp);
+			bridge(ptr, x, ptr->opp);
 		x++;
 	}
-	return (t);
+	return (ptr);
 }
 
-t_table			*fill_up(t_filler *ptr, t_table *t)
+t_filler		*fill_up(t_filler *ptr, char *line)
 {
 	int		n;
 	FILE	*fp;
-	char	*line;
 
 	n = 0;
 	fp = fopen("table", "w");
-	while (n <= ptr->lines)
+	if ((ft_strchr(line, ptr->me)) != 0 || (ft_strchr(line, ptr->opp)) != 0)
+			read_chara(ptr, line, n);
+		fprintf(fp, "%s\n", line);
+	while (n <= ptr->lines - 1)
 	{
 		get_next_line(0, &line);
 		if ((ft_strchr(line, ptr->me)) != 0 || (ft_strchr(line, ptr->opp)) != 0)
-			read_chara(ptr, t, line, n);
+			read_chara(ptr, line, n);
 		fprintf(fp, "%s\n", line);
+		ft_strdel(&line);
 		n++;
 	}
 	fclose(fp);
-	return (t);
+	return (ptr);
 }
