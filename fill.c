@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:04:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/24 19:21:15 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/25 08:47:17 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,22 @@ static t_filler			*read_chara(t_filler *ptr, char *line, int n)
 	return (ptr);
 }
 
-t_filler		*fill_up(t_filler *ptr, char *line)
+t_filler		*fill_up(t_filler *ptr)
 {
 	int		n;
 	FILE	*fp;
 
 	n = 0;
 	fp = fopen("table", "w");
-	if ((ft_strchr(line, ptr->me)) != 0 || (ft_strchr(line, ptr->opp)) != 0)
-			read_chara(ptr, line, n);
-		fprintf(fp, "%s\n", line);
+	fprintf(fp, "%s\n", ptr->line);
 	while (n <= ptr->lines)
 	{
-		get_next_line(0, &line);
-		if ((ft_strchr(line, ptr->me)) != 0 || (ft_strchr(line, ptr->opp)) != 0)
-			read_chara(ptr, line, n);
-		fprintf(fp, "%s\n", line);
-		ft_strdel(&line);
+		get_next_line(0, &ptr->line);
+		if ((ft_strchr(ptr->line, ptr->me)) != 0 || (ft_strchr(ptr->line, ptr->opp)) != 0)
+			read_chara(ptr, ptr->line, n);
+		fprintf(fp, "%s\n", ptr->line);
+		if (n < ptr->lines)
+		ft_strdel(&ptr->line);
 		n++;
 	}
 	fclose(fp);
