@@ -10,7 +10,7 @@ t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
 	FILE *fp;
 	m = 0;
 	i = 0;
-	fp = fopen("newtable", "a");
+	fp = fopen("newtable", "w");
 	while(i < tet->index)
 	{
 		b = tet->cordis[i].x + x;
@@ -32,7 +32,7 @@ t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
 			fprintf(fp, "%c", ptr->table[m][j]);
 			j++;
 		}
-		fprintf(fp, "m\n");
+		fprintf(fp, "%d\n", m);
 		m++;
 	}
 	fprintf(fp, "\nme_s.%d.%d\n", ptr->me_s.x, ptr->me_s.n);
@@ -55,7 +55,7 @@ int 		compare(t_filler *ptr, t_tetra *tet, int x, int n)
 	return (1);
 }
 
-static int		q_right(t_filler *ptr, t_tetra *tet)
+static t_filler		*q_right(t_filler *ptr, t_tetra *tet)
 {
 	int push_x;
 	int push_n;
@@ -77,11 +77,11 @@ static int		q_right(t_filler *ptr, t_tetra *tet)
 	fclose(fp);
 	if ((compare(ptr, tet, push_x, push_n)) == 1)
 		place(ptr, tet, push_x, push_n);
-	return (1);
+	return (ptr);
 }
 
 
-static int		q_left(t_filler *ptr, t_tetra *tet)
+static t_filler		*q_left(t_filler *ptr, t_tetra *tet)
 {
 	int push_x;
 	int push_n;
@@ -103,21 +103,14 @@ static int		q_left(t_filler *ptr, t_tetra *tet)
 	fclose(fp);
 	if ((compare(ptr, tet, push_x, push_n)) == 1)
 		place(ptr, tet, push_x, push_n);
-	return (1);
+	return (ptr);
 }
 
 t_filler		*algo(t_filler *ptr, t_tetra *tet)
 {
-	int fin;
-
-	fin = 0;
 	if (ptr->q == 4 || ptr->q == 2)
-		fin = q_right(ptr, tet);
+		q_right(ptr, tet);
 	else if (ptr->q == 1 || ptr->q == 3)
-		fin = q_left(ptr, tet);
-	/*if (fin == 1)
-		printf("[%d, %d]", t->me_s.n, t->me_s.x);
-	else
-		printf("[0, 0]");
-*/	return (ptr);
+		q_left(ptr, tet);
+	return (ptr);
 }

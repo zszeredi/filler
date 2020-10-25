@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:04:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/25 08:47:17 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/25 10:20:58 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@ t_filler		*fill_up(t_filler *ptr)
 			read_chara(ptr, ptr->line, n);
 		fprintf(fp, "%s\n", ptr->line);
 		if (n < ptr->lines)
-		ft_strdel(&ptr->line);
+			ft_strdel(&ptr->line);
 		n++;
 	}
+	ptr->q = quadrant(ptr);
 	fclose(fp);
 	return (ptr);
 }

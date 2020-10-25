@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:33:43 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/25 08:43:42 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/25 10:03:19 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static t_tetra			*save_cordis(t_tetra *tet, int i)
 	return (tet);
 }
 
-static t_tetra			*insert_tetra(t_tetra *tet, t_filler *ptr)
+static t_tetra	*insert_tetra(t_tetra *tet, t_filler *ptr)
 {
 	int i;
 
@@ -123,9 +123,7 @@ static t_tetra			*insert_tetra(t_tetra *tet, t_filler *ptr)
 		return (NULL);
 	cut_off(tet);
 	save_cordis(tet, i);
-	printf("%d %d", tet->cordis[0].x, tet->cordis[0].n);
 	ext_coords(ptr, tet);
-	algo(ptr, tet);
 	return(tet);
 }
 
@@ -159,10 +157,12 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 		ft_strdel(&line);
 		i++;
 	}
-	fclose(fp); // oo
 	insert_tetra(tet, ptr);
+	algo(ptr, tet);
 	delete_tetra(tet->tetra, tet);
 	free(tet);
 	free(tab);
+	fprintf(fp, "ptr->me.x = %d ptr->me.n = %d", ptr->me_s.x, ptr->me_s.n);
+	fclose(fp); // oo
 	return (ptr);
 }
