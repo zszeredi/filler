@@ -54,6 +54,7 @@ int main(void)
 	ft_strdel(&ptr->line);
 	while (get_next_line(0, &ptr->line) > 0) // fix loop here that I read line and send it to the right function
 	{
+		fprintf(fp, "hello");
 		fill_up(ptr);
 		while (m < ptr->lines) //loop out
 		{
@@ -80,11 +81,15 @@ int main(void)
 			fprintf(fp, "%d\n", m);
 			m++;
 		}
-
 		fprintf(fp, "%d %d", ptr->me_s.x, ptr->me_s.n);
-		printf("%d %d\n", ptr->me_s.n, ptr->me_s.x);
 		fclose(fp);
+		fp = fopen("next", "a");
+		printf("%d %d\n", ptr->me_s.n, ptr->me_s.x);
+		return(1);
+	
 	}
+	fclose(fp);
+	free(ptr->line);
 	delete_table(ptr->table, ptr);
 	free(ptr);
 	return (0);

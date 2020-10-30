@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 17:19:31 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/25 09:54:50 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/30 19:28:40 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 {
 	int ud;
 	int lr;
-	FILE *fp;
 
-	fp = fopen("quad", "w");
 	if (ptr->columns / 2 > ptr->me_s.x)
 		lr = 1;
 	else
@@ -27,7 +25,6 @@
 		ud = 1;
 	else
 		ud = 2;
-	fprintf(fp, "%d %d\n", lr, ud);
 	if (lr == 1 && ud == 1)
 		ptr->q = 1;
 	if (lr == 2 && ud == 1)
