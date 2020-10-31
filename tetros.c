@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:33:43 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/30 20:19:10 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/31 13:08:57 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,20 +131,15 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 {
 	int		i;
 	char 	**tab;
-//	char	*line;
 	t_tetra	*tet;
-	FILE 	*fp; // out
 	i = 0;
 	if(!(tet = malloc(sizeof(t_tetra))))
 		return (NULL);
-	fp = fopen("tetros", "w"); //o
 //	get_table_size(line, tet->t_lin, tet->t_col);
-	fprintf(fp, "line = %s", line);
 	tab = ft_strsplit(line, ' ');
 	tet->t_lin = ft_atoi(tab[1]);
 	tet->t_col = ft_atoi(tab[2]);
 	tet->num_stars = 0;
-	fprintf(fp, "lin = %d col = %d\n", tet->t_lin, tet->t_col); //oo
 	if(!(tet->tetra = ft_memalloc((tet->t_lin + 1) * sizeof(char*))))
 		return (NULL);
 	while (i < tet->t_lin)
@@ -153,7 +148,6 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 		if(!(tet->tetra[i] = ft_strdup(line)))
 			return (NULL);
 		tet->num_stars += ft_strnchr(line, '*');
-		fprintf(fp, "%s\n", tet->tetra[i]); //oo
 		ft_strdel(&line);
 		i++;
 	}
@@ -162,7 +156,5 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 	delete_tetra(tet->tetra, tet);
 	free(tet);
 	free(tab);
-	fprintf(fp, "ptr->me.x = %d ptr->me.n = %d", ptr->me_s.x, ptr->me_s.n);
-	fclose(fp); // oo
 	return (ptr);
 }

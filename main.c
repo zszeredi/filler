@@ -36,59 +36,25 @@
 int main(void)
 {
 	t_filler	*ptr;
-	int m;
-	int j;
-	FILE *fp;
-	fp = fopen("filler", "w");
-	m = 0;
+	
 	if (!(ptr = malloc(sizeof(t_filler))))
 		return (-1);
 	if (get_next_line(0, &ptr->line) > 0)
-	{
 		get_player(ptr);
-		fprintf(fp, "%c %c\n", ptr->me, ptr->opp);
-	}
 		ft_strdel(&ptr->line);
 	if (get_next_line(0, &ptr->line) > 0)
 		create_table(ptr, ptr->line);
 	ft_strdel(&ptr->line);
-	while (get_next_line(0, &ptr->line) > 0) // fix loop here that I read line and send it to the right function
+	while (get_next_line(0, &ptr->line) > 0)
 	{
-		fprintf(fp, "hello");
 		fill_up(ptr);
-		while (m < ptr->lines) //loop out
-		{
-			j = 0;
-			while (j <= ptr->columns)
-			{
-				fprintf(fp, "%c", ptr->table[m][j]);
-				j++;
-			}
-			fprintf(fp, "%d\n", m);
-			m++;
-		}
-		tetro_read(ptr, ptr->line);
-		fprintf(fp, "\n");
-		m = 0;
-		while (m < ptr->lines) //loop out
-		{
-			j = 0;
-			while (j <= ptr->columns)
-			{
-				fprintf(fp, "%c", ptr->table[m][j]);
-				j++;
-			}
-			fprintf(fp, "%d\n", m);
-			m++;
-		}
-		fprintf(fp, "%d %d", ptr->me_s.x, ptr->me_s.n);
-		fclose(fp);
-		fp = fopen("next", "a");
-		printf("%d %d\n", ptr->me_s.n, ptr->me_s.x);
-		return(1);
-	
+			tetro_read(ptr, ptr->line);
+		ft_putnbr(ptr->me_s.n);
+		ft_putchar(' ');
+		ft_putnbr(ptr->me_s.x);
+		ft_putchar('\n');
+	//	printf("%d %d\n", ptr->me_s.n, ptr->me_s.x);
 	}
-	fclose(fp);
 	free(ptr->line);
 	delete_table(ptr->table, ptr);
 	free(ptr);

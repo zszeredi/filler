@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:04:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/25 10:20:58 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/10/31 13:08:23 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,17 @@ static t_filler			*read_chara(t_filler *ptr, char *line, int n)
 t_filler		*fill_up(t_filler *ptr)
 {
 	int		n;
-	FILE	*fp;
 
 	n = 0;
-	fp = fopen("table", "w");
-	fprintf(fp, "%s\n", ptr->line);
 	while (n <= ptr->lines)
 	{
 		get_next_line(0, &ptr->line);
 		if ((ft_strchr(ptr->line, ptr->me)) != 0 || (ft_strchr(ptr->line, ptr->opp)) != 0)
 			read_chara(ptr, ptr->line, n);
-		fprintf(fp, "%s\n", ptr->line);
 		if (n < ptr->lines)
 			ft_strdel(&ptr->line);
 		n++;
 	}
 	ptr->q = quadrant(ptr);
-	fclose(fp);
 	return (ptr);
 }
