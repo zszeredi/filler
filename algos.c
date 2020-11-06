@@ -12,8 +12,8 @@ t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
 		a = tet->cordis[i].n + n;
 		if (i == 0)
 		{
-			ptr->me_s.x = b;
-			ptr->me_s.n = a;
+			ptr->sb.x = x - tet->del_col_s;
+			ptr->sb.n = n - tet->del_row_s;
 		}
 		ptr->table[a][b] = ptr->me + 32;
 		i++;
@@ -67,9 +67,22 @@ static t_filler		*q_left(t_filler *ptr, t_tetra *tet)
 
 t_filler		*algo(t_filler *ptr, t_tetra *tet)
 {
+	FILE *fp;
+	fp = fopen("text", "a");
+	fprintf(fp, "ptr->sb %d %d\n", ptr->sb.n, ptr->sb.x);
+	fprintf(fp, "q = %d\n", ptr->q);
+	fprintf(fp, "tet->l %d %d tet->r %d %d\n", tet->l.n, tet->l.x, tet->r.n, tet->r.x);
 	if (ptr->q == 4 || ptr->q == 2)
+	{
+		fprintf(fp, "right");
 		q_right(ptr, tet);
+	}
 	else if (ptr->q == 1 || ptr->q == 3)
+	{
+		fprintf(fp, "left");
 		q_left(ptr, tet);
+	}
+		fprintf(fp, "ptr->sb %d %d\n", ptr->sb.n, ptr->sb.x);
+	fclose(fp);
 	return (ptr);
 }

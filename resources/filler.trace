@@ -1,6 +1,4 @@
-seed = 4959
-X: error on input
-../zszeredi.filler: Segfault at 3
+seed = 2097
 players/abanlin.filler won
 Score:
-137AGAINST3
+108AGAINST3

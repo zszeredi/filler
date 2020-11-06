@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:04:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/31 13:08:23 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/11/06 21:00:54 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ static t_filler			*bridge(t_filler *ptr, int x, char c)
 static t_filler			*read_chara(t_filler *ptr, char *line, int n)
 {
 	int			x;
-	static int	counter;
-
-	counter = 0;
+	FILE *fp;
+	fp = fopen("line", "a");
 	x = 0;
 	ptr->coo.n = n;
 	while (line[x] != '\0')
@@ -39,34 +38,54 @@ static t_filler			*read_chara(t_filler *ptr, char *line, int n)
 		if (line[x] == ptr->me)
 		{
 			bridge(ptr, x, ptr->me);
-			if (counter == 0)
+			if (ptr->counter == 0)
 			{
+				fprintf(fp, "at 0 %d\n", n);
 				ptr->me_s.x = ptr->coo.x;
-				ptr->me_s.n = ptr->coo.n;
-				counter = 1;
+				ptr->me_s.n = n;
+				fprintf(fp, "first\n");
+				ptr->counter = 1;
 			}
 		}
 		else if (line[x] == ptr->opp)
 			bridge(ptr, x, ptr->opp);
 		x++;
 	}
+	fclose(fp);	
 	return (ptr);
 }
 
-t_filler		*fill_up(t_filler *ptr)
+t_filler		*fill_up(t_filler *ptr, int counter)
 {
 	int		n;
+	FILE *fp;
+	FILE *fp2;
 
+	fp = fopen("text", "a");
+	fp2 = fopen("line", "a");
 	n = 0;
-	while (n <= ptr->lines)
+	fprintf(fp2, "helo\n");
+	fclose(fp2);
+	while (ft_strstr(ptr->line, "Piece") == NULL)//n < ptr->lines)
 	{
 		get_next_line(0, &ptr->line);
+		fprintf(fp, "%s\n", ptr->line);
 		if ((ft_strchr(ptr->line, ptr->me)) != 0 || (ft_strchr(ptr->line, ptr->opp)) != 0)
 			read_chara(ptr, ptr->line, n);
-		if (n < ptr->lines)
-			ft_strdel(&ptr->line);
+		//		if (ft_strstr(ptr->line, "Piece") == NULL)
+		//			ft_strdel(&ptr->line);
+//		if (n == 0)
+//			i = 1;
 		n++;
+		
 	}
-	ptr->q = quadrant(ptr);
+	fprintf(fp, "ptr->me_s %d %d\n", ptr->me_s.n, ptr->me_s.x);
+	fclose(fp);
+	fp2 = fopen("line", "a");
+	fprintf(fp2, "bye\n");
+	fclose(fp2);
+	if (ptr->q == 0)
+		ptr->q = quadrant(ptr);
+	ptr->counter = 0;
 	return (ptr);
 }

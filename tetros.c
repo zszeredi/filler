@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:33:43 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/31 13:08:57 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/11/06 20:23:02 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static t_tetra 	*ext_coords(t_filler *ptr, t_tetra *tet)
 			tet->l.x = tet->cordis[i].x;
 			tet->l.n = tet->cordis[i].n;
 		}
-		if ((tet->cordis[i].x > tet->r.x && ptr->q == 2) || (tet->cordis[i].x >= tet->r.x && ptr->q == 4))
+		if (tet->cordis[i].x >= tet->r.x)
+	//	if ((tet->cordis[i].x > tet->r.x && ptr->q == 2) || (tet->cordis[i].x >= tet->r.x && ptr->q == 4))
 		{
 			tet->r.x = tet->cordis[i].x;
 			tet->r.n = tet->cordis[i].n;
@@ -85,7 +86,7 @@ static t_tetra			*deduct(t_tetra *tet)
 	return (tet);
 }
 
-static t_tetra			*save_cordis(t_tetra *tet, int i)
+static t_tetra			*save_cordis(t_filler *ptr, t_tetra *tet, int i)
 {
 	int j;
 
@@ -94,6 +95,11 @@ static t_tetra			*save_cordis(t_tetra *tet, int i)
 		j = 0;
 		while (j <= tet->t_col)
 		{
+			if (j == 0 && i == 0)
+			{
+				ptr->sb.x = j;
+				ptr->sb.n = i;
+			}
 			if (tet->tetra[i][j] == '*')
 			{
 				tet->cordis[tet->index].x = j;
@@ -122,7 +128,7 @@ static t_tetra	*insert_tetra(t_tetra *tet, t_filler *ptr)
 	if(!(tet->cordis = malloc(tet->num_stars * sizeof(t_coords))))
 		return (NULL);
 	cut_off(tet);
-	save_cordis(tet, i);
+	save_cordis(ptr, tet, i);
 	ext_coords(ptr, tet);
 	return(tet);
 }
@@ -132,9 +138,13 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 	int		i;
 	char 	**tab;
 	t_tetra	*tet;
+	FILE	*fp;
 	i = 0;
+	fp = fopen("text", "a");
+	//i = 0;
 	if(!(tet = malloc(sizeof(t_tetra))))
 		return (NULL);
+//	get_next_line(0, &line);
 //	get_table_size(line, tet->t_lin, tet->t_col);
 	tab = ft_strsplit(line, ' ');
 	tet->t_lin = ft_atoi(tab[1]);
@@ -145,6 +155,7 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 	while (i < tet->t_lin)
 	{
 		get_next_line(0, &line);
+		fprintf(fp, "%s\n", line); 
 		if(!(tet->tetra[i] = ft_strdup(line)))
 			return (NULL);
 		tet->num_stars += ft_strnchr(line, '*');
@@ -156,5 +167,6 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 	delete_tetra(tet->tetra, tet);
 	free(tet);
 	free(tab);
+	fclose(fp);
 	return (ptr);
 }
