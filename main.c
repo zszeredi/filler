@@ -25,6 +25,7 @@ int main(void)
 	fclose(fp);
 	ptr->q = 0;
 	ptr->counter = -1;
+	ptr->strat = 0;
 	fprintf(fp, "ptr->me = %c\n", ptr->me);
 	while (get_next_line(0, &ptr->line) > 0)
 	{

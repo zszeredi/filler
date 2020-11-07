@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:04:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/11/07 11:52:52 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/11/07 18:57:12 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,30 @@ static t_filler			*bridge(t_filler *ptr, int x, char c)
 {
 	ptr->coo.x = x - 4;
 	insert(ptr, c, ptr->coo);
+	return (ptr);
+}
+
+t_filler				*check_ext(t_filler *ptr)
+{
+	if (ptr->left.x >= ptr->down.x)
+	{
+		ptr->left.x = ptr->down.x;
+		ptr->left.n = ptr->down.n;
+	}
+	if (ptr->right.x < ptr->down.x && ptr->right.n == ptr->down.n)
+	{
+		ptr->right.x = ptr->down.x;
+		ptr->right.n = ptr->down.n;
+	}
+	return(ptr);
+}
+
+t_filler				*define(t_filler *ptr)
+{
+	ptr->left.x = ptr->up.x;
+	ptr->left.n = ptr->up.x;
+	ptr->right.x = ptr->up.x;
+	ptr->right.n = ptr->up.x;
 	return (ptr);
 }
 
@@ -47,12 +71,17 @@ static t_filler			*read_chara(t_filler *ptr, char *line, int n)
 				ptr->up.x = ptr->coo.x;
 				ptr->up.n = ptr->coo.n;
 				ptr->counter = 1;
+				define(ptr);
 			}
 			ptr->down.x = ptr->coo.x;
 			ptr->down.n = ptr->coo.n;
+			check_ext(ptr);
 		}
 		else if (line[x] == ptr->opp)
+		{
+			ptr->opp_line = ptr->coo.n;
 			bridge(ptr, x, ptr->opp);
+		}
 		x++;
 	}
 	return (ptr);

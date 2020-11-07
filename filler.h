@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 09:40:06 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/11/07 11:37:42 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/11/07 16:37:16 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef	struct	s_filler
 	int			columns;
 	int			lines;
 	int			q;
+	int			opp_line;
+	int			strat;
 	char		me;
 	char		opp;
 	char		*line;
@@ -37,6 +39,8 @@ typedef	struct	s_filler
 	t_coords	me_s;
 	t_coords	up;
 	t_coords	down;
+	t_coords	left;
+	t_coords	right;
 	t_coords	coo;
 	t_coords	sb;
 	int			counter;
@@ -51,6 +55,8 @@ typedef	struct	s_tetra
 	int			t_lin;
 	int			num_stars;
 	int			index;
+	int			push_x;
+	int			push_n;
 	char		**tetra;
 	t_coords	l;
 	t_coords	r;
@@ -58,6 +64,8 @@ typedef	struct	s_tetra
 
 }				t_tetra;
 t_filler			*delete_table(char **str, t_filler *ptr);
+t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n);
+int				compare(t_filler *ptr, t_tetra *tet, int x, int n);
 t_filler		*algo(t_filler *ptr, t_tetra *tet);
 t_tetra			*cut_off(t_tetra *tet);
 t_coords		coord_copy(t_coords coo, int i, int j);
