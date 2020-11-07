@@ -1,16 +1,15 @@
 helo
-at 0 12
-first
+last  12
 bye
 helo
-at 0 11
-first
+first 11
 bye
 helo
-at 0 11
-first
+first 11
 bye
 helo
-at 0 11
-first
+first 11
+bye
+helo
+first 11
 bye

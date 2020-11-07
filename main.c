@@ -24,6 +24,7 @@ int main(void)
 		ft_strdel(&ptr->line);
 	fclose(fp);
 	ptr->q = 0;
+	ptr->counter = 0;
 	while (get_next_line(0, &ptr->line) > 0)
 	{
 		if(ft_strstr(ptr->line, "Plateau") != NULL)

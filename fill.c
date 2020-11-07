@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:04:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/11/06 21:00:54 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/11/07 09:51:57 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,18 @@ static t_filler			*read_chara(t_filler *ptr, char *line, int n)
 		if (line[x] == ptr->me)
 		{
 			bridge(ptr, x, ptr->me);
-			if (ptr->counter == 0)
+			if (ptr->counter == 0 && ptr->q == 4)
 			{
-				fprintf(fp, "at 0 %d\n", n);
+				fprintf(fp, "first %d\n", n);
 				ptr->me_s.x = ptr->coo.x;
 				ptr->me_s.n = n;
-				fprintf(fp, "first\n");
 				ptr->counter = 1;
+			}
+			else if (ptr->counter == 0)
+			{
+				fprintf(fp, "last  %d\n", n);
+				ptr->me_s.x = ptr->coo.x;
+				ptr->me_s.n = n;
 			}
 		}
 		else if (line[x] == ptr->opp)

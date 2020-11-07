@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 17:19:31 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/10/30 19:28:40 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/11/07 09:50:54 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 		lr = 1;
 	else
 		lr = 2;
-	if (ptr->lines / 2 > ptr->me_s.n)
+	if (ptr->lines / 2 >= ptr->me_s.n)
 		ud = 1;
 	else
 		ud = 2;
