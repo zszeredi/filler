@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:33:43 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/11/07 11:07:04 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/11/07 11:59:12 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,11 @@ static t_tetra 	*ext_coords(t_filler *ptr, t_tetra *tet)
 	while (i < tet->index)
 	{
 		if (tet->cordis[i].x < tet->l.x)
-	//	if ((tet->cordis[i].x < tet->l.x && ptr->q == 1) || (tet->cordis[i].x <= tet->l.x && ptr->q == 3))
 		{
 			tet->l.x = tet->cordis[i].x;
 			tet->l.n = tet->cordis[i].n;
 		}
 		if (tet->cordis[i].x >= tet->r.x)
-	//	if ((tet->cordis[i].x > tet->r.x && ptr->q == 2) || (tet->cordis[i].x >= tet->r.x && ptr->q == 4))
 		{
 			tet->r.x = tet->cordis[i].x;
 			tet->r.n = tet->cordis[i].n;
@@ -145,7 +143,6 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 	//i = 0;
 	if(!(tet = malloc(sizeof(t_tetra))))
 		return (NULL);
-//	get_next_line(0, &line);
 //	get_table_size(line, tet->t_lin, tet->t_col);
 	tab = ft_strsplit(line, ' ');
 	tet->t_lin = ft_atoi(tab[1]);
@@ -163,7 +160,6 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 		ft_strdel(&line);
 		i++;
 	}
-	fclose(fp);
 	insert_tetra(tet, ptr);
 	algo(ptr, tet);
 	delete_tetra(tet->tetra, tet);

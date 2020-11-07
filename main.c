@@ -25,6 +25,7 @@ int main(void)
 	fclose(fp);
 	ptr->q = 0;
 	ptr->counter = -1;
+	fprintf(fp, "ptr->me = %c\n", ptr->me);
 	while (get_next_line(0, &ptr->line) > 0)
 	{
 		if(ft_strstr(ptr->line, "Plateau") != NULL)
