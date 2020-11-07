@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:04:16 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/11/07 18:57:12 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/11/07 20:37:37 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_filler			*bridge(t_filler *ptr, int x, char c)
 
 t_filler				*check_ext(t_filler *ptr)
 {
-	if (ptr->left.x >= ptr->down.x)
+	if (ptr->left.x > ptr->down.x)//not equal maybe etter to push same for other
 	{
 		ptr->left.x = ptr->down.x;
 		ptr->left.n = ptr->down.n;

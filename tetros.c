@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:33:43 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/11/07 18:37:50 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/11/07 20:37:39 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static t_tetra 	*ext_coords(t_filler *ptr, t_tetra *tet)
 	tet->r.n = tet->cordis[i].n;
 	while (i < tet->index)
 	{
-		if (tet->cordis[i].x < tet->l.x)
+		if (tet->cordis[i].x <= tet->l.x)
 		{
 			tet->l.x = tet->cordis[i].x;
 			tet->l.n = tet->cordis[i].n;

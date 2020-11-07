@@ -20,41 +20,26 @@ t_tetra			*push_by(t_filler *ptr, t_tetra *tet)
 			tet->push_n = ptr->down.n - tet->l.n;
 		}
 	}
-	else if (ptr->strat == 1)
+	else 
 	{
 
 		fprintf(fp, "me %d > %d\n", ptr->me_s.x, ptr->columns / 3);
-		if (ptr->me_s.x > ptr->columns / 3 && tet->t_col < tet->t_lin)	
+		if (tet->r.x < tet->r.n || ptr->left.x <= 2)
+	
 		{
 			fprintf(fp, "CHANGING direct to right\n");
-			tet->push_x = ptr->up.x - tet->r.x;
-			tet->push_n = ptr->up.n - tet->r.n;
+			tet->push_x = ptr->up.x - tet->l.x;
+			tet->push_n = ptr->up.n - tet->l.n;
 
 		}
 		else
 		{
 			fprintf(fp, "CHANGING direct to left\n");
-			tet->push_x = ptr->up.x - tet->r.x;
-			tet->push_n = ptr->up.n - tet->r.n;
+			tet->push_x = ptr->left.x - tet->r.x;
+			tet->push_n = ptr->left.n - tet->r.n;
 		
 		}
 		ptr->strat = 2; //not sure
-	}
-	else
-	{
-		fprintf(fp, "me %d > %d\n", ptr->me_s.x, ptr->columns / 3);
-		if (tet->r.x < tet->r.n)
-		{
-			fprintf(fp, "CHANGED BASE GOIN UP RIGHT\n");
-			tet->push_x = ptr->up.x - tet->r.x;
-			tet->push_n = ptr->up.n - tet->r.n;
-		}
-		else //if (ptr->q == 1 || ptr->q == 3 || tet->t_col < tet->t_lin)
-		{
-			fprintf(fp, "CHANGED BASED GOING DOWN LEFT\n");
-			tet->push_x = ptr->left.x - tet->r.x;
-			tet->push_n = ptr->left.n - tet->r.n;
-		}
 	}
 	fclose(fp);
 	return (tet);
