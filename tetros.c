@@ -6,7 +6,7 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 11:33:43 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/11/06 20:23:02 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/11/07 11:07:04 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static t_tetra 	*ext_coords(t_filler *ptr, t_tetra *tet)
 	tet->r.n = tet->cordis[i].n;
 	while (i < tet->index)
 	{
-		if ((tet->cordis[i].x < tet->l.x && ptr->q == 1) || (tet->cordis[i].x <= tet->l.x && ptr->q == 3))
+		if (tet->cordis[i].x < tet->l.x)
+	//	if ((tet->cordis[i].x < tet->l.x && ptr->q == 1) || (tet->cordis[i].x <= tet->l.x && ptr->q == 3))
 		{
 			tet->l.x = tet->cordis[i].x;
 			tet->l.n = tet->cordis[i].n;
@@ -162,6 +163,7 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 		ft_strdel(&line);
 		i++;
 	}
+	fclose(fp);
 	insert_tetra(tet, ptr);
 	algo(ptr, tet);
 	delete_tetra(tet->tetra, tet);

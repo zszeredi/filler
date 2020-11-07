@@ -6,13 +6,13 @@
 /*   By: zszeredi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 17:19:31 by zszeredi          #+#    #+#             */
-/*   Updated: 2020/11/07 09:50:54 by zszeredi         ###   ########.fr       */
+/*   Updated: 2020/11/07 11:43:24 by zszeredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
- int		quadrant(t_filler *ptr)
+int		quadrant(t_filler *ptr)
 {
 	int ud;
 	int lr;
@@ -21,7 +21,7 @@
 		lr = 1;
 	else
 		lr = 2;
-	if (ptr->lines / 2 >= ptr->me_s.n)
+	if (ptr->lines / 2 > ptr->me_s.n)
 		ud = 1;
 	else
 		ud = 2;

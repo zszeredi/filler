@@ -24,15 +24,34 @@ t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
 int 		compare(t_filler *ptr, t_tetra *tet, int x, int n)
 {
 	int i;
+	int counter;
+	FILE *fp;
 
+	fp = fopen("insert", "a");
 	i = 0;
-	while (i < tet->index)
-	{
-		if (ptr->table[tet->cordis[i].x + x][tet->cordis[i].n + n] == '.')
-			i++;
-		else
-			return (-1);
+	counter = 0;
+	while (i < tet->index && ptr->table[tet->cordis[i].x][tet->cordis[i].n + n] != '\0')
+		{
+			fprintf(fp, "i = %d\n", i);
+			fprintf(fp, "ptr->table[%d][%d]\n", tet->cordis[i].n, tet->cordis[i].x);
+			fprintf(fp, "ptr->table[%d][%d]\n", tet->cordis[i].n + n, tet->cordis[i].x + x);
+	fclose(fp);
+			if (ptr->table[tet->cordis[i].x + x][tet->cordis[i].n + n] == ptr->me)
+				counter++;
+			if (ptr->table[tet->cordis[i].x + x][tet->cordis[i].n + n] != ptr->opp)
+				i++;
+			else
+			{
+				if (counter > 1)
+				fprintf(fp, "overlap\n");
+				else
+					fprintf(fp, "no fit\n");
+				fclose(fp);
+				return(-1);
+			}
 	}
+	fprintf(fp, "ok");
+	fclose(fp);
 	return (1);
 }
 
@@ -41,8 +60,8 @@ static t_filler		*q_right(t_filler *ptr, t_tetra *tet)
 	int push_x;
 	int push_n;
 	int i = 0;
-	push_x = ptr->me_s.x - tet->r.x; // most right
-	push_n = ptr->me_s.n - tet->r.n;
+	push_x = ptr->up.x - tet->r.x; // most right
+	push_n = ptr->up.n - tet->r.n;
 	while (i < tet->index) //llop out
 		i++;
 	if ((compare(ptr, tet, push_x, push_n)) == 1)
@@ -56,8 +75,8 @@ static t_filler		*q_left(t_filler *ptr, t_tetra *tet)
 	int push_x;
 	int push_n;
 	int i = 0;
-	push_x = ptr->me_s.x - tet->l.x; // most right
-	push_n = ptr->me_s.n - tet->l.n;
+	push_x = ptr->down.x - tet->l.x; // most right
+	push_n = ptr->down.n - tet->l.n;
 	while (i < tet->index) //llop out
 		i++;
 	if ((compare(ptr, tet, push_x, push_n)) == 1)
@@ -72,17 +91,19 @@ t_filler		*algo(t_filler *ptr, t_tetra *tet)
 	fprintf(fp, "ptr->sb %d %d\n", ptr->sb.n, ptr->sb.x);
 	fprintf(fp, "q = %d\n", ptr->q);
 	fprintf(fp, "tet->l %d %d tet->r %d %d\n", tet->l.n, tet->l.x, tet->r.n, tet->r.x);
+	fclose(fp);
+	fp = fopen("text", "a");
 	if (ptr->q == 4 || ptr->q == 2)
 	{
 		fprintf(fp, "right");
 		q_right(ptr, tet);
 	}
-	else if (ptr->q == 1 || ptr->q == 3)
+	if (ptr->q == 1 || ptr->q == 3)
 	{
 		fprintf(fp, "left");
 		q_left(ptr, tet);
 	}
-		fprintf(fp, "ptr->sb %d %d\n", ptr->sb.n, ptr->sb.x);
+	fprintf(fp, "ptr->sb %d %d\n", ptr->sb.n, ptr->sb.x);
 	fclose(fp);
 	return (ptr);
 }

@@ -24,7 +24,7 @@ int main(void)
 		ft_strdel(&ptr->line);
 	fclose(fp);
 	ptr->q = 0;
-	ptr->counter = 0;
+	ptr->counter = -1;
 	while (get_next_line(0, &ptr->line) > 0)
 	{
 		if(ft_strstr(ptr->line, "Plateau") != NULL)
@@ -32,7 +32,7 @@ int main(void)
 			get_next_line(0, &ptr->line);
 			counter = 1;
 		}
-		fill_up(ptr, counter);
+		fill_up(ptr);
 		tetro_read(ptr, ptr->line);
 		ft_putnbr(ptr->sb.n);
 		ft_putchar(' ');
