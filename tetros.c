@@ -34,23 +34,20 @@ t_coords		coord_copy(t_coords coo, int i, int j)
 	return (coo);
 }
 
-static t_tetra 	*ext_coords(t_filler *ptr, t_tetra *tet)
+t_tetra 	*ext_coords(t_filler *ptr, t_tetra *tet, int c)
 {
 	int i;
 
 	i = 0;
-	tet->l.x = tet->cordis[i].x;
-	tet->l.n = tet->cordis[i].n;
-	tet->r.x = tet->cordis[i].x;
-	tet->r.n = tet->cordis[i].n;
+
 	while (i < tet->index)
 	{
-		if (tet->cordis[i].x <= tet->l.x)
+		if ((tet->cordis[i].x < tet->l.x && c == 0) || (tet->cordis[i].x <= tet->l.x && c == 1))
 		{
 			tet->l.x = tet->cordis[i].x;
 			tet->l.n = tet->cordis[i].n;
 		}
-		if (tet->cordis[i].x >= tet->r.x)// && ptr->strat == 0) || (tet->cordis[i].x > tet->r.x && ptr->strat == 1))
+		if ((tet->cordis[i].x >= tet->r.x && c == 0) || (tet->cordis[i].x >= tet->l.x && c == 1))
 		{
 			tet->r.x = tet->cordis[i].x;
 			tet->r.n = tet->cordis[i].n;
@@ -96,8 +93,8 @@ static t_tetra			*save_cordis(t_filler *ptr, t_tetra *tet, int i)
 		{
 			if (j == 0 && i == 0)
 			{
-				ptr->sb.x = j;
-				ptr->sb.n = i;
+				ptr->coo.x = j;
+				ptr->coo.n = i;
 			}
 			if (tet->tetra[i][j] == '*')
 			{
@@ -128,7 +125,11 @@ static t_tetra	*insert_tetra(t_tetra *tet, t_filler *ptr)
 		return (NULL);
 	cut_off(tet);
 	save_cordis(ptr, tet, i);
-	ext_coords(ptr, tet);
+	tet->l.x = tet->cordis[i].x;
+	tet->l.n = tet->cordis[i].n;
+	tet->r.x = tet->cordis[i].x;
+	tet->r.n = tet->cordis[i].n;
+//	ext_coords(ptr, tet);
 	return(tet);
 }
 
@@ -153,7 +154,7 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 	while (i < tet->t_lin)
 	{
 		get_next_line(0, &line);
-		fprintf(fp, "%s\n", line); 
+		fprintf(fp, "%s\n", line);
 		if(!(tet->tetra[i] = ft_strdup(line)))
 			return (NULL);
 		tet->num_stars += ft_strnchr(line, '*');
@@ -163,8 +164,9 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 	insert_tetra(tet, ptr);
 	algo(ptr, tet);
 	delete_tetra(tet->tetra, tet);
+	free(tet->cordis);
 	free(tet);
-	free(tab);
+	delete_double_array(tab);
 	fclose(fp);
 	return (ptr);
 }

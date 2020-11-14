@@ -26,31 +26,7 @@ static t_filler			*bridge(t_filler *ptr, int x, char c)
 	return (ptr);
 }
 
-t_filler				*check_ext(t_filler *ptr)
-{
-	if (ptr->left.x > ptr->down.x)//not equal maybe etter to push same for other
-	{
-		ptr->left.x = ptr->down.x;
-		ptr->left.n = ptr->down.n;
-	}
-	if (ptr->right.x < ptr->down.x && ptr->right.n == ptr->down.n)
-	{
-		ptr->right.x = ptr->down.x;
-		ptr->right.n = ptr->down.n;
-	}
-	return(ptr);
-}
-
-t_filler				*define(t_filler *ptr)
-{
-	ptr->left.x = ptr->up.x;
-	ptr->left.n = ptr->up.x;
-	ptr->right.x = ptr->up.x;
-	ptr->right.n = ptr->up.x;
-	return (ptr);
-}
-
-static t_filler			*read_chara(t_filler *ptr, char *line, int n) 
+static t_filler			*read_chara(t_filler *ptr, char *line, int n)
 {
 	int			x;
 	x = 0;
@@ -68,14 +44,13 @@ static t_filler			*read_chara(t_filler *ptr, char *line, int n)
 			}
 			if (ptr->counter == 0)
 			{
+				ptr->me_line = ptr->coo.n;
 				ptr->up.x = ptr->coo.x;
 				ptr->up.n = ptr->coo.n;
 				ptr->counter = 1;
-				define(ptr);
 			}
 			ptr->down.x = ptr->coo.x;
 			ptr->down.n = ptr->coo.n;
-			check_ext(ptr);
 		}
 		else if (line[x] == ptr->opp)
 		{

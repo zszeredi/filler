@@ -1,9 +1,9 @@
-"C:\Users\Zsuzsanna Szeredi\AppData\Local\JetBrains\CLion2020.2\cygwin_cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/filler"
+"C:\Users\Zsuzsanna Szeredi\AppData\Local\JetBrains\CLion2020.2\cygwin_cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/cygdrive/c/Users/Zsuzsanna Szeredi/CLionProjects/p_filler"
 -- Configuring done
 CMake Error at CMakeLists.txt:11 (add_executable):
   Cannot find source file:
 
-    resources/maps/map00
+    ft_printf/srcs/cut_str.c
 
   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
   .hpp .hxx .in .txx

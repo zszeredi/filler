@@ -52,7 +52,7 @@ t_filler	*create_table(t_filler *ptr, char *line)
 	i = -1;
 	get_table_size(line, ptr);
 //	get_table_size(line, ptr->lines, ptr->columns);
-	if (!(ptr->table = ft_memalloc((ptr->lines + 1) * sizeof(char*))))
+	if (!(ptr->table = ft_memalloc((ptr->lines) * sizeof(char*))))
 		return (delete_table(ptr->table, ptr));
 	while (++i < ptr->lines)
 	{

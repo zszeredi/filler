@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
+/*t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
 {
 	int i;
 	int a;
@@ -24,8 +24,14 @@ t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
 		a = tet->cordis[i].n + n;
 		if (i == 0)
 		{
-			ptr->sb.x = x - tet->del_col_s;
-			ptr->sb.n = n - tet->del_row_s;
+			ptr->coo.x = x - tet->del_col_s;
+			ptr->coo.n = n - tet->del_row_s;
+		}
+		if (a == ptr->opp_line  || b <= 2)
+		{
+			ptr->me_s.n = a;
+			ptr->me_s.x = b;
+			ptr->intersection = 1;
 		}
 		ptr->table[a][b] = ptr->me + 32;
 		i++;
@@ -33,79 +39,35 @@ t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
 	return (ptr);
 }
 
-t_filler	*intersection(t_filler *ptr, t_coords coord, int a, int x)
-{
-
-	if (a == ptr->opp_line - 1 || a == ptr->opp_line + 1  || coord.x + x  <= 2) // protection if I am close too the wall
-	{
-		ptr->strat = 1;
-		ptr->me_s.n = a;
-		ptr->me_s.x = coord.x + x;
-	}
-	return (ptr);
-}
-
-int			move(t_filler *ptr, t_tetra *tet, int x, int n) //not deployed builds on fillit
-{
-	int a;
-	int b;
-	int i;
-	int counter;
-	
-	i = 0;
-	a = 0;
-	counter = 0;
-	while (a < ptr->lines)
-	{
-		b = 0;
-		while (b < ptr->columns)
-		{
-			if (counter > 1)
-			{
-				b++;
-				i = 0;
-			}
-			if (ptr->table[tet->cordis[i].n + n + a][tet->cordis[i].x + x + b] == ptr->me)
-				counter++;
-			if (ptr->table[tet->cordis[i].n + n + a][tet->cordis[i].x + x + b] == ptr->opp)
-			{
-				b++;
-				i = 0;
-			}
-			i++;
-		}
-		a++;
-		b = 0;
-	}
-	//if does not fit!!
-	return (1);
-}
-
 int 		compare(t_filler *ptr, t_tetra *tet, int x, int n)
 {
 	int i;
 	FILE *fp;
-	FILE *fp2;
+	static int counter;
 	fp = fopen("text", "a");
-	fp2 = fopen("err", "a");
 	i = 0;
 	while (i < tet->index && ptr->table[tet->cordis[i].n][tet->cordis[i].x] != '\0')
 	{
 		fprintf(fp, "i = %d\n", i);
 		fprintf(fp, "ptr->table[%d][%d]\n", tet->cordis[i].n, tet->cordis[i].x);
 		fprintf(fp, "ptr->table[%d][%d]\n", tet->cordis[i].n + n, tet->cordis[i].x + x);
-		if (ptr->table[tet->cordis[i].n + n][tet->cordis[i].x + x] == ptr->opp )
+		if (ptr->table[tet->cordis[i].n + n][tet->cordis[i].x + x] == ptr->me + 32)
 		{
-			fprintf(fp, "MOVE");
-			if(move(ptr, tet, x, n) == -1)
-				return (-1);
+			fprintf(fp, "counter  = %d\n", counter);
+			counter++;
 		}
-		if (ptr->strat == 0 || ptr->strat == 2)
-			intersection(ptr, tet->cordis[i], tet->cordis[i].n + n, x); // might have to +- 1 as I might not have place
-
+		if (ptr->table[tet->cordis[i].n + n][tet->cordis[i].x + x] == ptr->opp + 32|| counter > 1)
+		{
+			fprintf(fp, "DOES NOT FIT\n");
+			return (-1);
+		}
 		i++;
 	}
-	fprintf(fp, "ok");
+	fprintf(fp, "counter  = %d\n", counter);
+	//if (counter < 1)
+	//	return (-1);
+	counter = 0;
+	fprintf(fp, "ok\n");
 	fclose(fp);
 	return (1);
-}
+}*/

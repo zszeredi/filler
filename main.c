@@ -4,9 +4,6 @@ int main(void)
 {
 	t_filler	*ptr;
 	FILE		*fp;
-	int			i;
-	static		int counter;
-	i = 0;
 	fp = fopen("text", "a");
 	if (!(ptr = malloc(sizeof(t_filler))))
 		return (-1);
@@ -25,26 +22,22 @@ int main(void)
 	fclose(fp);
 	ptr->q = 0;
 	ptr->counter = -1;
-	ptr->strat = 0;
+	ptr->intersection = 0;
+	ptr->wall = 0;
 	fprintf(fp, "ptr->me = %c\n", ptr->me);
 	while (get_next_line(0, &ptr->line) > 0)
 	{
 		if(ft_strstr(ptr->line, "Plateau") != NULL)
-		{
 			get_next_line(0, &ptr->line);
-			counter = 1;
-		}
 		fill_up(ptr);
 		tetro_read(ptr, ptr->line);
-		ft_putnbr(ptr->sb.n);
+		ft_putnbr(ptr->coo.n);
 		ft_putchar(' ');
-		ft_putnbr(ptr->sb.x);
+		ft_putnbr(ptr->coo.x);
 		ft_putchar('\n');
-		ft_strdel(&ptr->line);
 		//	printf("%d %d\n", ptr->me_s.n, ptr->me_s.x);
 	}
 	fclose(fp);
-	free(ptr->line);
 	delete_table(ptr->table, ptr);
 	free(ptr);
 	return (0);

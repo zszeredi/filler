@@ -12,7 +12,20 @@
 
 #include "filler.h"
 
- void	get_table_size(char *line, int x, int y)
+void		delete_double_array(char **str)
+{
+	int i;
+
+	i = 0;
+	while (i < 3)
+	{
+		ft_strdel(&str[i]);
+		i++;
+	}
+	ft_strdel(str);
+}
+
+void	get_table_size(char *line, int x, int y)
 {
 	char **sizes;
 
@@ -21,4 +34,3 @@
 	y = ft_atoi(sizes[2]);
 	ft_strdel(sizes);
 }
-

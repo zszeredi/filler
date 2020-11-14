@@ -13,19 +13,20 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdint.h>
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
 # include <math.h>
 # include <stdarg.h>
 # include <limits.h>
-
+# include <stdio.h> /// OUT
 # define BUFF_SIZE 100
 
 typedef struct		s_gnl
 {
 	char			buff[BUFF_SIZE + 1];
-	char			*rest[OPEN_MAX];
+	char			*rest[FOPEN_MAX];
 	int				ret;
 	char			*ptr;
 }					t_gnl;
