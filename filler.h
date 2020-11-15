@@ -13,11 +13,11 @@
 #ifndef FILLER_H
 # define FILLER_H
 
-# include <stdint.h>
+# include <stdlib.h>
 # include "libft/libft.h"
+# include <stdint.h>
 # include <unistd.h>
 # include <string.h>
-# include <stdlib.h>
 # include <stdio.h>
 # include <errno.h>
 
@@ -32,7 +32,7 @@ typedef	struct	s_filler
 	int			columns;
 	int			lines;
 	int			q;
-	int			wall;
+	int 		end;
 	int			counter;
 	int 		me_line;
 	int			opp_line;
@@ -41,8 +41,6 @@ typedef	struct	s_filler
 	char		opp;
 	char		*line;
 	char		**table;
-	t_coords	left;
-	t_coords	right;
 	t_coords	me_s;
 	t_coords	up;
 	t_coords	down;
@@ -68,15 +66,15 @@ typedef	struct	s_tetra
 	t_coords	*cordis;
 
 }				t_tetra;
-t_filler			*delete_table(char **str, t_filler *ptr);
-void		delete_double_array(char **str);
+t_filler		*delete_table(char **str, t_filler *ptr);
+void			delete_double_array(char **str);
 t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n);
 int				compare(t_filler *ptr, t_tetra *tet, int x, int n);
 t_filler		*algo(t_filler *ptr, t_tetra *tet);
 t_tetra			*cut_off(t_tetra *tet);
 t_coords		coord_copy(t_coords coo, int i, int j);
-t_tetra 	*ext_coords(t_filler *ptr, t_tetra *tet, int n);
-t_filler			*tetro_read(t_filler *ptr, char *line);
+t_tetra 		*ext_coords(t_tetra *tet, int n);
+t_filler		*tetro_read(t_filler *ptr, char *line);
 int				quadrant(t_filler *ptr);
 t_filler		*fill_up(t_filler *ptr);
 t_filler		*create_table(t_filler *ptr, char *line);

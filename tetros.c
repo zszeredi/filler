@@ -34,7 +34,7 @@ t_coords		coord_copy(t_coords coo, int i, int j)
 	return (coo);
 }
 
-t_tetra 	*ext_coords(t_filler *ptr, t_tetra *tet, int c)
+t_tetra 	*ext_coords(t_tetra *tet, int c)
 {
 	int i;
 
@@ -137,9 +137,9 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 	int		i;
 	char 	**tab;
 	t_tetra	*tet;
-	FILE	*fp;
-	i = 0;
+	FILE *fp;
 	fp = fopen("text", "a");
+	i = 0;
 	//i = 0;
 	if(!(tet = malloc(sizeof(t_tetra))))
 		return (NULL);
@@ -153,19 +153,20 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 	while (i < tet->t_lin)
 	{
 		get_next_line(0, &line);
-		fprintf(fp, "%s\n", line);
 		if(!(tet->tetra[i] = ft_strdup(line)))
 			return (NULL);
 		tet->num_stars += ft_strnchr(line, '*');
 		ft_strdel(&line);
 		i++;
 	}
-	fclose(fp);
 	insert_tetra(tet, ptr);
 	algo(ptr, tet);
+	fprintf(fp, "back");
 	delete_tetra(tet->tetra, tet);
 	free(tet->cordis);
 	free(tet);
 	delete_double_array(tab);
+	fprintf(fp, "going to main\n");
+	fclose(fp);
 	return (ptr);
 }

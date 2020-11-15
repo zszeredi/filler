@@ -36,12 +36,12 @@ static void		dot(char *s, int i)
 
 static t_filler	*get_table_size(char *line, t_filler *ptr)
 {
-	char **sizes;
+	char **size;
 
-	sizes = ft_strsplit(line, ' ');
-	ptr->lines = ft_atoi(sizes[1]);
-	ptr->columns = ft_atoi(sizes[2]);
-	ft_strdel(sizes);
+	size = ft_strsplit(line, ' ');
+	ptr->lines = ft_atoi(size[1]);
+	ptr->columns = ft_atoi(size[2]);
+	delete_double_array(size);
 	return (ptr);
 }
 
