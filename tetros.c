@@ -129,7 +129,6 @@ static t_tetra	*insert_tetra(t_tetra *tet, t_filler *ptr)
 	tet->l.n = tet->cordis[i].n;
 	tet->r.x = tet->cordis[i].x;
 	tet->r.n = tet->cordis[i].n;
-//	ext_coords(ptr, tet);
 	return(tet);
 }
 
@@ -161,12 +160,12 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 		ft_strdel(&line);
 		i++;
 	}
+	fclose(fp);
 	insert_tetra(tet, ptr);
 	algo(ptr, tet);
 	delete_tetra(tet->tetra, tet);
 	free(tet->cordis);
 	free(tet);
 	delete_double_array(tab);
-	fclose(fp);
 	return (ptr);
 }
