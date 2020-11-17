@@ -1,5 +1,5 @@
-seed = 7744
-../zszeredi.filler: Segfault at 125
+seed = 4213
+../zszeredi.filler: Segfault at 162
 ../zszeredi.filler won
 Score:
-33AGAINST125
+0AGAINST162
