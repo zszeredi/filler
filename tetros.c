@@ -12,12 +12,7 @@
 
 #include "filler.h"
 
-t_coords		coord_copy(t_coords coo, int i, int j)
-{
-	coo.x = i;
-	coo.n = j;
-	return (coo);
-}
+
 
 t_tetra 	*ext_coords(t_tetra *tet, int c)
 {
@@ -28,15 +23,9 @@ t_tetra 	*ext_coords(t_tetra *tet, int c)
 	while (i < tet->index)
 	{
 		if ((tet->cordis[i].x < tet->l.x && c == 0) || (tet->cordis[i].x <= tet->l.x && c == 1))
-		{
-			tet->l.x = tet->cordis[i].x;
-			tet->l.n = tet->cordis[i].n;
-		}
+			tet->l = coord_copy(tet->l, tet->cordis[i].x, tet->cordis[i].n);
 		if ((tet->cordis[i].x >= tet->r.x && c == 0) || (tet->cordis[i].x >= tet->l.x && c == 1))
-		{
-			tet->r.x = tet->cordis[i].x;
-			tet->r.n = tet->cordis[i].n;
-		}
+			tet->r = coord_copy(tet->r, tet->cordis[i].x, tet->cordis[i].n);
 		i++;
 	}
 	return (tet);
@@ -77,14 +66,10 @@ static t_tetra			*save_cordis(t_filler *ptr, t_tetra *tet, int i)
 		while (j <= tet->t_col)
 		{
 			if (j == 0 && i == 0)
-			{
-				ptr->coo.x = j;
-				ptr->coo.n = i;
-			}
+				ptr->coo = coord_copy(ptr->coo, j, i);
 			if (tet->tetra[i][j] == '*')
 			{
-				tet->cordis[tet->index].x = j;
-				tet->cordis[tet->index].n = i;
+				tet->cordis[tet->index] = coord_copy(tet->cordis[tet->index], j, i);
 				tet->index++;
 			}
 			if (tet->index == tet->num_stars)

@@ -13,10 +13,7 @@ t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
 		b = tet->cordis[i].x + x;
 		a = tet->cordis[i].n + n;
 		if (i == 0)
-		{
-			ptr->coo.x = x - tet->del_col_s;
-			ptr->coo.n = n - tet->del_row_s;
-		}
+			ptr->coo = coord_copy(ptr->coo, x - tet->del_col_s, n - tet->del_row_s);
 		if (a == ptr->opp_line || b <= 2)
 			ptr->intersection = 1;
 		ptr->table[a][b] = ptr->me;
@@ -106,8 +103,7 @@ int 			find_place_down(t_filler *ptr, t_tetra *tet)
 		i--;
 		j = ptr->columns;
 	}
-	ptr->coo.x = 0;
-	ptr->coo.n = 0;
+	ptr->coo = coord_copy(ptr->coo, 0, 0);
 	ptr->end = 1;
 	return  (-1);
 }
@@ -142,8 +138,7 @@ int 			find_place_up(t_filler *ptr, t_tetra *tet)
 		i++;
 		j = 0;
 	}
-	ptr->coo.x = 0;
-	ptr->coo.n = 0;
+	ptr->coo = coord_copy(ptr->coo, 0, 0);
 	ptr->end = 1;
 	return  (-1);
 }
@@ -153,7 +148,7 @@ t_filler		*algo(t_filler *ptr, t_tetra *tet)
 	push_ud(ptr, tet, 0);
 	if (compare(ptr, tet, tet->push_x, tet->push_n) < 1)
 	{
-		if (ptr->q == 3 || ptr->q == 4)
+		if (ptr->q == 4)
 			find_place_up(ptr, tet);
 		else
 			find_place_down(ptr, tet);

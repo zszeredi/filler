@@ -25,3 +25,10 @@ char		*delete_double_array(char **str, int n)
 	free(str);
 	return (NULL);
 }
+
+t_coords		coord_copy(t_coords coo, int j, int i)
+{
+	coo.x = j;
+	coo.n = i;
+	return (coo);
+}

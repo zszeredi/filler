@@ -68,6 +68,7 @@ typedef	struct	s_tetra
 }				t_tetra;
 
 char 			*delete_double_array(char **str, int n);
+t_coords		coord_copy(t_coords coo, int i, int j);
 t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n);
 int				compare(t_filler *ptr, t_tetra *tet, int x, int n);
 t_filler		*algo(t_filler *ptr, t_tetra *tet);
