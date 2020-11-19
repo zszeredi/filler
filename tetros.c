@@ -12,14 +12,11 @@
 
 #include "filler.h"
 
-
-
-t_tetra 	*ext_coords(t_tetra *tet, int c)
+t_tetra					*ext_coords(t_tetra *tet, int c)
 {
 	int i;
 
 	i = 0;
-
 	while (i < tet->index)
 	{
 		if ((tet->cordis[i].x < tet->l.x && c == 0) || (tet->cordis[i].x <= tet->l.x && c == 1))
@@ -85,7 +82,7 @@ static t_tetra			*save_cordis(t_filler *ptr, t_tetra *tet, int i)
 	return (tet);
 }
 
-static t_tetra	*insert_tetra(t_tetra *tet, t_filler *ptr)
+static t_tetra			*insert_tetra(t_tetra *tet, t_filler *ptr)
 {
 	int i;
 
@@ -103,22 +100,23 @@ static t_tetra	*insert_tetra(t_tetra *tet, t_filler *ptr)
 }
 
 
-static t_tetra	*get_ttable_size(char *line, t_tetra *tet)
+static t_tetra			*get_ttable_size(char *line, t_tetra *tet)
 {
 	char **sizes;
 
 	sizes = ft_strsplit(line, ' ');
 	tet->t_lin = ft_atoi(sizes[1]);
 	tet->t_col = ft_atoi(sizes[2]);
-	delete_double_array(sizes, 3);
+	ft_delete_double_array(sizes, 3);
 	return (tet);
 }
 
 
-t_filler			*tetro_read(t_filler *ptr, char *line)
+t_filler				*tetro_read(t_filler *ptr, char *line)
 {
 	int		i;
 	t_tetra	*tet;
+
 	i = 0;
 	if(!(tet = malloc(sizeof(t_tetra))))
 		return (NULL);
@@ -137,7 +135,7 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 	}
 	insert_tetra(tet, ptr);
 	algo(ptr, tet);
-	delete_double_array(tet->tetra, tet->t_lin);
+	ft_delete_double_array(tet->tetra, tet->t_lin);
 	free(tet->cordis);
 	free(tet);
 	free(line);

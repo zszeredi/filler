@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-static void		dot(char *s, int i)
+static void			dot(char *s, int i)
 {
 	while (i > 0)
 	{
@@ -21,18 +21,18 @@ static void		dot(char *s, int i)
 	}
 }
 
-static t_filler	*get_table_size(char *line, t_filler *ptr)
+static t_filler		*get_table_size(char *line, t_filler *ptr)
 {
-	char **sizes;
+	char	**sizes;
 
 	sizes = ft_strsplit(line, ' ');
 	ptr->lines = ft_atoi(sizes[1]);
 	ptr->columns = ft_atoi(sizes[2]);
-	delete_double_array(sizes, 3);
+	ft_delete_double_array(sizes, 3);
 	return (ptr);
 }
 
-t_filler	*create_table(t_filler *ptr, char *line)
+t_filler			*create_table(t_filler *ptr, char *line)
 {
 	int	i;
 
@@ -40,14 +40,14 @@ t_filler	*create_table(t_filler *ptr, char *line)
 	get_table_size(line, ptr);
 	if (!(ptr->table = ft_memalloc((ptr->lines) * sizeof(char*))))
 	{
-		delete_double_array(ptr->table, ptr->lines);
+		ft_delete_double_array(ptr->table, ptr->lines);
 		return (NULL);
 	}
 	while (++i < ptr->lines)
 	{
 		if (!(ptr->table[i] = ft_memalloc((ptr->columns + 1) * sizeof(char))))
 		{
-			delete_double_array(ptr->table, ptr->lines);
+			ft_delete_double_array(ptr->table, ptr->lines);
 			return (NULL);
 		}
 		else

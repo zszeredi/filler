@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int		quadrant(t_filler *ptr)
+int			quadrant(t_filler *ptr)
 {
 	int ud;
 	int lr;

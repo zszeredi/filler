@@ -28,6 +28,7 @@ int 		compare(t_filler *ptr, t_tetra *tet, int x, int n)
 	int a;
 	int b;
 	int counter;
+
 	i = 0;
 	counter = 0;
 	while (i < tet->index)
@@ -78,6 +79,7 @@ int 			find_place_down(t_filler *ptr, t_tetra *tet)
 	int i;
 	int j;
 	int index;
+
 	i = ptr->down.n;
 	j = ptr->down.x;
 	while (i > 0)
@@ -89,7 +91,7 @@ int 			find_place_down(t_filler *ptr, t_tetra *tet)
 				index = 0;
 				while (index < tet->num_stars)
 				{
-					push_calc(tet, index, i, j);
+					push_calc(tet, index, i, j); // SEPERATE FUNC
 					if (compare(ptr, tet, tet->push_x, tet->push_n) == 1)
 					{
 						place(ptr, tet, tet->push_x, tet->push_n);
@@ -113,6 +115,7 @@ int 			find_place_up(t_filler *ptr, t_tetra *tet)
 	int i;
 	int j;
 	int index;
+
 	i = ptr->up.n;
 	j = ptr->up.x;
 	while (i < ptr->lines)

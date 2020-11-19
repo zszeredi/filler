@@ -3,6 +3,7 @@
 int			main(void)
 {
 	t_filler	*ptr;
+
 	if (!(ptr = malloc(sizeof(t_filler))))
 		return (-1);
 	if (get_next_line(0, &ptr->line) > 0)
@@ -29,7 +30,7 @@ int			main(void)
 		ft_putnbr(ptr->coo.x);
 		ft_putchar('\n');
 	}
-	delete_double_array(ptr->table, ptr->lines);
+	ft_delete_double_array(ptr->table, ptr->lines);
 	free(ptr);
 	return (0);
 }

@@ -136,5 +136,6 @@ int					ft_str_is_printable(char *str);
 char				*ft_strcapitalize(char *str);
 char				*ft_strupcase(char *str);
 char				*ft_strlowcase(char *str);
+char				*ft_delete_double_array(char **str, int n);
 
 #endif

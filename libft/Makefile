@@ -89,6 +89,7 @@ SRCS =  ft_atoi.c \
 		ft_str_find_num.c \
 		get_next_line.c \
 		ft_pos_i.c \
+		ft_delete_double_array.c \
 
 RESULT = ft_atoi.o \
 		ft_atoi_dot.o \
@@ -175,6 +176,7 @@ RESULT = ft_atoi.o \
 		ft_str_find_num.o \
 		get_next_line.o \
 		ft_pos_i.o \
+		ft_delete_double_array.o \
 
 INCLUDES = libft.h
 
