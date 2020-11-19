@@ -69,7 +69,7 @@ typedef	struct	s_tetra
 
 }				t_tetra;
 t_filler			*delete_table(char **str, t_filler *ptr);
-void		delete_double_array(char **str);
+char 			*delete_double_array(char **str, int n);
 t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n);
 int				compare(t_filler *ptr, t_tetra *tet, int x, int n);
 t_filler		*algo(t_filler *ptr, t_tetra *tet);

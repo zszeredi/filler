@@ -1,6 +1,4 @@
-seed = 2560
-X: error on input
-../zszeredi.filler: Segfault at 40
-champions/hcao.filler won
+seed = 7507
+../zszeredi.filler won
 Score:
-52AGAINST40
+3AGAINST155
