@@ -72,6 +72,7 @@ t_filler		*fill_up(t_filler *ptr)
 	i = 0;
 	while (ft_strstr(ptr->line, "Piece") == NULL)//n < ptr->lines)
 	{
+		free(ptr->line);
 		get_next_line(0, &ptr->line);
 		fprintf(fp, "%s\n", ptr->line);
 		if ((ft_strchr(ptr->line, ptr->me)) != 0 || (ft_strchr(ptr->line, ptr->opp)) != 0)

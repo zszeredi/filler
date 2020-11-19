@@ -31,7 +31,6 @@ int 		compare(t_filler *ptr, t_tetra *tet, int x, int n)
 	int a;
 	int b;
 	int counter;
-
 	i = 0;
 	counter = 0;
 	while (i < tet->index)
@@ -81,9 +80,6 @@ int 			find_place(t_filler *ptr, t_tetra *tet)
 	int i;
 	int j;
 	int index;
-	FILE *fp;
-
-	fp = fopen("text", "a");
 	i = ptr->up.n;
 	j = ptr->up.x;
 	while (i < ptr->lines)
@@ -109,25 +105,18 @@ int 			find_place(t_filler *ptr, t_tetra *tet)
 		i++;
 		j = 0;
 	}
-	fprintf(fp, "zero zero\n");
-	fclose(fp);
 	ptr->coo.x = 0;
 	ptr->coo.n = 0;
 	ptr->end = 1;
-	return (1);
+	return  (-1);
 }
 
 t_filler		*algo(t_filler *ptr, t_tetra *tet)
 {
-	FILE *fp;
-
-	fp = fopen("text", "a");
 	push_ud(ptr, tet, 0);
 	if (compare(ptr, tet, tet->push_x, tet->push_n) < 1)
 		find_place(ptr, tet);
 	else
 		place(ptr, tet, tet->push_x, tet->push_n);
-	fprintf(fp, "THE END");
-	fclose(fp);
 	return (ptr);
 }
