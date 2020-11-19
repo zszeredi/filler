@@ -18,16 +18,17 @@ int			main(void)
 	while (get_next_line(0, &ptr->line) > 0 && ptr->end == 0)
 	{
 		if (ft_strstr(ptr->line, "Plateau") != NULL)
+		{
+			free(ptr->line);
 			get_next_line(0, &ptr->line);
-		fill_up(ptr);
+		}
+			fill_up(ptr);
 		tetro_read(ptr, ptr->line);
 		ft_putnbr(ptr->coo.n);
 		ft_putchar(' ');
 		ft_putnbr(ptr->coo.x);
 		ft_putchar('\n');
 	}
-	if (ptr->line)
-		free(ptr->line);
 	delete_double_array(ptr->table, ptr->lines);
 	free(ptr);
 	return (0);

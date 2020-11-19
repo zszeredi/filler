@@ -117,28 +117,37 @@ static t_tetra	*insert_tetra(t_tetra *tet, t_filler *ptr)
 	return(tet);
 }
 
+
+static t_tetra	*get_ttable_size(char *line, t_tetra *tet)
+{
+	char **sizes;
+
+	sizes = ft_strsplit(line, ' ');
+	tet->t_lin = ft_atoi(sizes[1]);
+	tet->t_col = ft_atoi(sizes[2]);
+	delete_double_array(sizes, 3);
+	return (tet);
+}
+
+
 t_filler			*tetro_read(t_filler *ptr, char *line)
 {
 	int		i;
-	char 	**tab;
 	t_tetra	*tet;
 	i = 0;
 	if(!(tet = malloc(sizeof(t_tetra))))
 		return (NULL);
-//	get_table_size(line, tet->t_lin, tet->t_col);
-	tab = ft_strsplit(line, ' ');
-	tet->t_lin = ft_atoi(tab[1]);
-	tet->t_col = ft_atoi(tab[2]);
+	get_ttable_size(line, tet);
 	tet->num_stars = 0;
 	if(!(tet->tetra = ft_memalloc((tet->t_lin + 1) * sizeof(char*))))
 		return (NULL);
 	while (i < tet->t_lin)
 	{
+		free(line);
 		get_next_line(0, &line);
 		if(!(tet->tetra[i] = ft_strdup(line)))
 			return (NULL);
 		tet->num_stars += ft_strnchr(line, '*');
-		free(line);
 		i++;
 	}
 	insert_tetra(tet, ptr);
@@ -146,6 +155,6 @@ t_filler			*tetro_read(t_filler *ptr, char *line)
 	delete_double_array(tet->tetra, tet->t_lin);
 	free(tet->cordis);
 	free(tet);
-	delete_double_array(tab, 3);
+	free(line);
 	return (ptr);
 }

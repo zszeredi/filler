@@ -38,7 +38,6 @@ t_filler	*create_table(t_filler *ptr, char *line)
 
 	i = -1;
 	get_table_size(line, ptr);
-//	get_table_size(line, ptr->lines, ptr->columns);
 	if (!(ptr->table = ft_memalloc((ptr->lines) * sizeof(char*))))
 	{
 		delete_double_array(ptr->table, ptr->lines);

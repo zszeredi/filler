@@ -25,13 +25,3 @@ char		*delete_double_array(char **str, int n)
 	free(str);
 	return (NULL);
 }
-
-void	get_table_size(char *line, int x, int y)
-{
-	char **sizes;
-
-	sizes = ft_strsplit(line, ' ');
-	x = ft_atoi(sizes[1]);
-	y = ft_atoi(sizes[2]);
-	delete_double_array(sizes, x);
-}

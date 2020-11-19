@@ -79,6 +79,5 @@ int				quadrant(t_filler *ptr);
 t_filler		*fill_up(t_filler *ptr);
 t_filler		*create_table(t_filler *ptr, char *line);
 t_filler		*get_player(t_filler *ptr);
-//void			get_table_size(char *line, int x, int y);
 int				main(void);
 #endif
