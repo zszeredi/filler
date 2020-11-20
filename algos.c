@@ -1,5 +1,4 @@
 #include "filler.h"
-#include <stdio.h>
 
 t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
 {
@@ -8,7 +7,7 @@ t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
 	int b;
 
 	i = 0;
-	while(i < tet->index)
+	while (i < tet->index)
 	{
 		b = tet->cordis[i].x + x;
 		a = tet->cordis[i].n + n;
@@ -22,7 +21,7 @@ t_filler		*place(t_filler *ptr, t_tetra *tet, int x, int n)
 	return (ptr);
 }
 
-int 		compare(t_filler *ptr, t_tetra *tet, int x, int n)
+int				compare(t_filler *ptr, t_tetra *tet, int x, int n)
 {
 	int i;
 	int a;
@@ -73,8 +72,7 @@ t_tetra 		*push_calc(t_tetra *tet, int index, int i, int j)
 	return (tet);
 }
 
-
-int 			find_place_down(t_filler *ptr, t_tetra *tet)
+int				find_place_down(t_filler *ptr, t_tetra *tet)
 {
 	int i;
 	int j;
@@ -107,10 +105,10 @@ int 			find_place_down(t_filler *ptr, t_tetra *tet)
 	}
 	ptr->coo = coord_copy(ptr->coo, 0, 0);
 	ptr->end = 1;
-	return  (-1);
+	return (-1);
 }
 
-int 			find_place_up(t_filler *ptr, t_tetra *tet)
+int				find_place_up(t_filler *ptr, t_tetra *tet)
 {
 	int i;
 	int j;
@@ -143,7 +141,7 @@ int 			find_place_up(t_filler *ptr, t_tetra *tet)
 	}
 	ptr->coo = coord_copy(ptr->coo, 0, 0);
 	ptr->end = 1;
-	return  (-1);
+	return (-1);
 }
 
 t_filler		*algo(t_filler *ptr, t_tetra *tet)

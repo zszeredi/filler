@@ -26,7 +26,7 @@ static t_filler			*bridge(t_filler *ptr, int x, char c)
 	return (ptr);
 }
 
-static t_filler			*read_chara(t_filler *ptr, char *line, int n)
+static t_filler			*read_chara(t_filler *ptr, char *line, int n)//TOO LONG
 {
 	int	x;
 

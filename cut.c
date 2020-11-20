@@ -7,7 +7,7 @@ static int		cut_off_lin(t_tetra *tet, int n)
 
 	x = 0;
 	counter = 0;
-	while (x < tet->t_col &&  n < tet->t_lin && n >= 0)
+	while (x < tet->t_col && n < tet->t_lin && n >= 0)
 	{
 		if (tet->tetra[n][x] == '*')
 			return (counter);
@@ -20,7 +20,7 @@ static int		cut_off_lin(t_tetra *tet, int n)
 		else
 			x++;
 	}
-	return(counter);
+	return (counter);
 }
 
 static int		cut_off_col(t_tetra *tet, int x)
@@ -43,7 +43,7 @@ static int		cut_off_col(t_tetra *tet, int x)
 		else
 			n++;
 	}
-	return(counter);
+	return (counter);
 }
 
 t_tetra			*cut_off(t_tetra *tet)

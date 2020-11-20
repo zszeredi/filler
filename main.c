@@ -1,12 +1,12 @@
 #include "filler.h"
 
-int			main(void)
+int	main(void) // TOO LONG
 {
 	t_filler	*ptr;
 
 	if (!(ptr = malloc(sizeof(t_filler))))
 		return (-1);
-	if (get_next_line(0, &ptr->line) > 0)
+	if (get_next_line(0, &ptr->line) > 0) // try getting this part out
 		get_player(ptr);
 	free(ptr->line);
 	if (get_next_line(0, &ptr->line) > 0)
@@ -23,8 +23,8 @@ int			main(void)
 			free(ptr->line);
 			get_next_line(0, &ptr->line);
 		}
-			fill_up(ptr);
-		tetro_read(ptr, ptr->line);
+		fill_up(ptr);
+		tetro_read(ptr, ptr->line); // try with ft_printf
 		ft_putnbr(ptr->coo.n);
 		ft_putchar(' ');
 		ft_putnbr(ptr->coo.x);
